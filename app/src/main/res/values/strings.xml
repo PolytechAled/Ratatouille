@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ratatouille</string>
+    <string name="recipe_name">Recipe name</string>
 </resources>
