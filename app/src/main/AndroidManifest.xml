@@ -10,6 +10,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity
+            android:name=".HomeWithGeneration"
+            android:exported="false" />
+        <activity
+            android:name=".HomeWithoutGeneration"
+            android:exported="false" />
+        <activity
+            android:name=".Recipe"
+            android:exported="false" />
+        <activity
+            android:name=".MenuRemoved"
+            android:exported="false" />
+        <activity
+            android:name=".CreationTime"
+            android:exported="false" />
+        <activity
+            android:name=".AddIngredient"
+            android:exported="false" />
+        <activity
+            android:name=".AddCategory"
+            android:exported="false" />
+        <activity
+            android:name=".TakePicture"
+            android:exported="false" />
+        <activity
+            android:name=".EditingCustomRecipe"
+            android:exported="false" />
+        <activity
+            android:name=".MenuGenerator"
+            android:exported="false" />
+        <activity
+            android:name=".DayConfiguration"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeSearch"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".SelectMenu"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
