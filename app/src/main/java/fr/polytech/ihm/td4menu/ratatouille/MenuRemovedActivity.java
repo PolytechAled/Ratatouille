@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DayConfiguration extends AppCompatActivity {
+public class MenuRemovedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_day_configuration);
+        setContentView(R.layout.activity_menu_removed);
     }
 }

@@ -10,46 +10,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity
-            android:name=".HomeWithGeneration"
+            android:name=".RecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeWithoutGeneration"
+            android:name=".MenuRemovedActivity"
             android:exported="false" />
         <activity
-            android:name=".Recipe"
+            android:name=".CreationTimeActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuRemoved"
+            android:name=".AddIngredientActivity"
             android:exported="false" />
         <activity
-            android:name=".CreationTime"
+            android:name=".AddCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".AddIngredient"
+            android:name=".TakePictureActivity"
             android:exported="false" />
         <activity
-            android:name=".AddCategory"
+            android:name=".EditingCustomRecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".TakePicture"
+            android:name=".MenuGeneratorActivity"
             android:exported="false" />
         <activity
-            android:name=".EditingCustomRecipe"
+            android:name=".DayConfigurationActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuGenerator"
+            android:name=".RecipeSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".DayConfiguration"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".RecipeSearch"
-            android:exported="false" />
-        <activity
-            android:name=".Settings"
-            android:exported="false" />
-        <activity
-            android:name=".SelectMenu"
+            android:name=".SelectMenuActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

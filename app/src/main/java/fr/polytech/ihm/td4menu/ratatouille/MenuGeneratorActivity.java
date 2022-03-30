@@ -11,7 +11,7 @@ import java.util.Calendar;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.repository.CalendarRepository;
 
-public class MenuGenerator extends AppCompatActivity {
+public class MenuGeneratorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
