@@ -9,12 +9,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
+
         <activity
             android:name=".RecipeView"
             android:exported="false" />
         <activity
+            android:name=".RecipeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuRemovedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreationTimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddIngredientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TakePictureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditingCustomRecipeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuGeneratorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DayConfigurationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecipeSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
