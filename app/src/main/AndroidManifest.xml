@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity
+            android:name=".ListOfRecipe"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity
