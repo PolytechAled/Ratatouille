@@ -17,14 +17,5 @@ public class MenuGeneratorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_generator);
-
-        findViewById(R.id.calendar_button).setOnClickListener((evt) -> {
-            CalendarRepository cal = new CalendarRepository();
-
-            Calendar beginTime = Calendar.getInstance();
-            beginTime.set(2022, 8, 1, 7, 30);
-
-            cal.registerEvent(this, new Recipe("Porc au caramel", 2), beginTime);
-        });
     }
 }
