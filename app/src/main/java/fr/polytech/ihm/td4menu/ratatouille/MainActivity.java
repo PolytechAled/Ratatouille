@@ -57,12 +57,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Date d = new Date();
         SimpleDateFormat f = new SimpleDateFormat("HH");
         String s = f.format(d);
         TextView printheure = findViewById(R.id.printheure);
         printheure.setText(s);
         if(Integer.parseInt(s) == 18) sendNotificationOnChannel("Au fourneau !", "C'est de préparer le plat: {}", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
+
     }
 
 }
