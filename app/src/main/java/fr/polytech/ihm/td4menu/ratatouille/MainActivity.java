@@ -1,8 +1,8 @@
 package fr.polytech.ihm.td4menu.ratatouille;
 
-<<<<<<< HEAD
+
 import android.content.Intent;
-=======
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -11,7 +11,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
->>>>>>> origin/notifications
+
 import android.os.Bundle;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
