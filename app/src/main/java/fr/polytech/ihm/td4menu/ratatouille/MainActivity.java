@@ -25,6 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private int notificationId = 0;
@@ -57,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent(this, ListRecipeActivity.class);
+        startActivity(intent);
 
         Date d = new Date();
         SimpleDateFormat f = new SimpleDateFormat("HH");

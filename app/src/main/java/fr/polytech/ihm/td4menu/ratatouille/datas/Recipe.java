@@ -1,8 +1,9 @@
 package fr.polytech.ihm.td4menu.ratatouille.datas;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Recipe {
+public class Recipe implements Serializable {
 
     /**
      * Cooking time in hour.
