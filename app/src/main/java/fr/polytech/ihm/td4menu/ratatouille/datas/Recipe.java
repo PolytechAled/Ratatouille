@@ -13,6 +13,7 @@ public class Recipe implements Serializable {
      * Unique id.
      */
     protected final int id;
+    protected int relId;
 
     /**
      * Cooking time in minutes.
@@ -50,14 +51,14 @@ public class Recipe implements Serializable {
     protected List<RecipeCategory> categoryList;
 
     public Recipe(int id, String name, String origin, int cookingTime) {
-        this.id = id;
+        this.id = relId = id;
         this.name = name;
         this.cookingTime = cookingTime;
         this.origin = Optional.of(origin);
     }
 
     public Recipe(int id, String name, int cookingTime) {
-        this.id = id;
+        this.id = relId = id;
         this.name = name;
         this.cookingTime = cookingTime;
         this.origin = Optional.empty();
@@ -80,8 +81,12 @@ public class Recipe implements Serializable {
         throw new UnsupportedOperationException("Could not find a supported API (" + source.name() + ").");
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
+    }
+
+    public int getRelId() {
+        return relId;
     }
 
     public void setCookingTime(int cookingTime) {
