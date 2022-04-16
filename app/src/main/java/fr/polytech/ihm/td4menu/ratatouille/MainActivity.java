@@ -2,6 +2,8 @@ package fr.polytech.ihm.td4menu.ratatouille;
 
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -20,6 +22,13 @@ import java.util.Date;
 import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_2_ID;
 import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_1_ID;
 import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_3_ID;
+import org.json.JSONException;
+
+import java.io.IOException;
+
+import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -70,6 +79,22 @@ public class MainActivity extends AppCompatActivity {
         printheure.setText(s);
 
         if(Integer.parseInt(s) == 16 || Integer.parseInt(s) == 11) sendNotificationOnChannel("Au fourneau !", "C'est de préparer le plat: {}", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
-    }
 
+        new Thread(() -> {
+            /*List<Integer> recipeList = new ArrayList<>();
+
+            recipeList.add(716429);*/
+
+            Recipe recipe = null;
+            try {
+                recipe = Recipe.instantiate(DataSource.SPOONACULAR, 716429);
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            }
+
+            Log.d("Ratatouille", recipe.toString());
+
+            Recipes.add(recipe);
+        }).start();
+    }
 }

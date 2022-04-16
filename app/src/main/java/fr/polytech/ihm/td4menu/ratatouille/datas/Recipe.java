@@ -1,53 +1,87 @@
 package fr.polytech.ihm.td4menu.ratatouille.datas;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 public class Recipe implements Serializable {
 
     /**
-     * Cooking time in hour.
+     * Unique id.
      */
-    private int cookingTime;
+    protected final int id;
+
+    /**
+     * Cooking time in minutes.
+     */
+    protected int cookingTime;
 
     /**
      * Recipe name
      */
-    private String name;
+    protected String name;
 
     /**
      * Is a custom recipe made by the user.
      */
-    private boolean isCustom;
+    protected boolean isCustom;
 
     /**
      * The recipe origin
      */
-    private String origin;
+    protected Optional<String> origin;
 
     /**
      * The image url.
      */
-    private String imageUrl;
+    protected String imageUrl;
 
     /**
      * Step list.
      */
-    private List<String> steps;
+    protected List<String> steps;
 
     /**
      * Recipe category.
      */
-    private List<RecipeCategory> categoryList;
+    protected List<RecipeCategory> categoryList;
 
-    public Recipe() {
-        this.isCustom = false;
+    public Recipe(int id, String name, String origin, int cookingTime) {
+        this.id = id;
+        this.name = name;
+        this.cookingTime = cookingTime;
+        this.origin = Optional.of(origin);
     }
 
-    public Recipe(String name, String origin, int cookingTime) {
+    public Recipe(int id, String name, int cookingTime) {
+        this.id = id;
         this.name = name;
-        this.origin = origin;
         this.cookingTime = cookingTime;
+        this.origin = Optional.empty();
+    }
+
+    public static Recipe instantiate(DataSource source, int relId) throws JSONException, IOException {
+        switch (source){
+            case RATATOUILLE:
+                return Recipes.get(relId);
+
+            case SPOONACULAR:
+                Spoonacular recipeApi = new Spoonacular();
+
+                return recipeApi.getRecipe(relId);
+
+            case EDAMAM:
+                throw new UnsupportedOperationException("Edamam API is not implemented yet.");
+        }
+
+        throw new UnsupportedOperationException("Could not find a supported API (" + source.name() + ").");
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setCookingTime(int cookingTime) {
@@ -59,7 +93,7 @@ public class Recipe implements Serializable {
     }
 
     public void setOrigin(String origin) {
-        this.origin = origin;
+        this.origin = Optional.of(origin);
     }
 
     public void setImageUrl(String imageUrl) {
@@ -90,7 +124,7 @@ public class Recipe implements Serializable {
         isCustom = custom;
     }
 
-    public String getOrigin() {
+    public Optional<String> getOrigin() {
         return origin;
     }
 
@@ -104,5 +138,23 @@ public class Recipe implements Serializable {
 
     public List<RecipeCategory> getCategoryList() {
         return categoryList;
+    }
+
+    public static SpRecipe newSpRecipe(int relId, String title, int cookingTime){
+        return new SpRecipe((relId + DataSource.SPOONACULAR.name()).hashCode(), title, cookingTime);
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id=" + id +
+                ", cookingTime=" + cookingTime +
+                ", name='" + name + '\'' +
+                ", isCustom=" + isCustom +
+                ", origin='" + origin + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", steps=" + steps +
+                ", categoryList=" + categoryList +
+                '}';
     }
 }

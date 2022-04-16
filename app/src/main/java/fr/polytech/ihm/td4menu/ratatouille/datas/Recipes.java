@@ -1,32 +1,31 @@
 package fr.polytech.ihm.td4menu.ratatouille.datas;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Recipes {
-    private List<Recipe> recipeList;
+    private static final Recipes instance = new Recipes();
 
-    public Recipes() {
-        this.recipeList = new ArrayList<>();
+    private Map<Integer, Recipe> recipeList;
+
+    private Recipes() {
+        this.recipeList = new HashMap<>();
     }
 
-    public List<Recipe> getRecipeList() {
-        return recipeList;
+    public Collection<Recipe> getRecipeList() {
+        return recipeList.values();
     }
 
-    public void setRecipeList(List<Recipe> recipeList) {
-        this.recipeList = recipeList;
+    public static void add(Recipe recipe) {
+        instance.recipeList.put(recipe.getId(), recipe);
     }
 
-    public void setRecipe(Recipe recipe) {
-        this.recipeList.add(recipe);
+    public static Recipe get(int position){
+        return instance.recipeList.get(position);
     }
 
-    public Recipe get(int position){
-        return this.recipeList.get(position);
-    }
-
-    public int size(){
-        return this.recipeList.size();
+    public static int size() {
+        return instance.recipeList.size();
     }
 }
