@@ -1,5 +1,8 @@
 package fr.polytech.ihm.td4menu.ratatouille;
 
+
+import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -8,6 +11,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+
 import android.os.Bundle;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
@@ -16,6 +20,12 @@ import java.util.Date;
 import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_2_ID;
 import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_1_ID;
 import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_3_ID;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,11 +59,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent(this, ListRecipeActivity.class);
+        startActivity(intent);
+
         Date d = new Date();
         SimpleDateFormat f = new SimpleDateFormat("HH");
         String s = f.format(d);
         TextView printheure = findViewById(R.id.printheure);
         printheure.setText(s);
+
         if(Integer.parseInt(s) == 16 || Integer.parseInt(s) == 11) sendNotificationOnChannel("Au fourneau !", "C'est de préparer le plat: {}", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
     }
 

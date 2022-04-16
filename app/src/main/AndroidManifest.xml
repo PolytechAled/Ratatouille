@@ -2,21 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.polytech.ihm.td4menu.ratatouille">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="fr.polytech.ihm.td4menu.ratatouille.Application.Notifications"
+        android:name=".Application.Notifications"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
+        <activity
+            android:name=".recipe.RecipeDetailsFragment"
+            android:exported="false" />
+        <activity
+            android:name=".recipe.ListRecipeActivity"
+            android:exported="false" />
+
         <service
             android:name=".CookNotification"
             android:enabled="true"
             android:exported="true" />
+
         <activity
-            android:name=".RecipeActivity"
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".recipe.RecipeActivity"
             android:exported="false" />
         <activity
             android:name=".MenuRemovedActivity"
@@ -43,13 +55,13 @@
             android:name=".DayConfigurationActivity"
             android:exported="false" />
         <activity
-            android:name=".RecipeSearchActivity"
-            android:exported="false" />
-        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".SelectMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateARecipe"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -61,5 +73,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.VIBRATE" />
+
 </manifest>
