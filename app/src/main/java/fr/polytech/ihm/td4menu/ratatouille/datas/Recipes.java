@@ -13,8 +13,8 @@ public class Recipes {
         this.recipeList = new HashMap<>();
     }
 
-    public Collection<Recipe> getRecipeList() {
-        return recipeList.values();
+    public static Collection<Recipe> getRecipeList() {
+        return instance.recipeList.values();
     }
 
     public static void add(Recipe recipe) {

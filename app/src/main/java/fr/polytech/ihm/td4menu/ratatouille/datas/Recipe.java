@@ -33,7 +33,8 @@ public class Recipe implements Serializable {
     /**
      * The recipe origin
      */
-    protected Optional<String> origin;
+    protected String origin;
+    protected boolean hasOrigin;
 
     /**
      * The image url.
@@ -54,14 +55,15 @@ public class Recipe implements Serializable {
         this.id = relId = id;
         this.name = name;
         this.cookingTime = cookingTime;
-        this.origin = Optional.of(origin);
+        this.origin = origin;
+        this.hasOrigin = true;
     }
 
     public Recipe(int id, String name, int cookingTime) {
         this.id = relId = id;
         this.name = name;
         this.cookingTime = cookingTime;
-        this.origin = Optional.empty();
+        this.hasOrigin = false;
     }
 
     public static Recipe instantiate(DataSource source, int relId) throws JSONException, IOException {
@@ -98,7 +100,8 @@ public class Recipe implements Serializable {
     }
 
     public void setOrigin(String origin) {
-        this.origin = Optional.of(origin);
+        this.origin = origin;
+        this.hasOrigin = true;
     }
 
     public void setImageUrl(String imageUrl) {
@@ -130,7 +133,7 @@ public class Recipe implements Serializable {
     }
 
     public Optional<String> getOrigin() {
-        return origin;
+        return hasOrigin ? Optional.of(origin) : Optional.empty();
     }
 
     public boolean isCustom() {

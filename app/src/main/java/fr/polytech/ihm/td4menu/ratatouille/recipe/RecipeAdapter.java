@@ -16,6 +16,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
@@ -23,9 +26,13 @@ import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
     Context context;
+    List<Recipe> recipeList;
 
     public RecipeAdapter(Context context) {
         this.context = context;
+        this.recipeList = new ArrayList<>();
+
+        recipeList.addAll(Recipes.getRecipeList());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
@@ -52,22 +59,22 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             int position = getLayoutPosition(); //gets item position
 
             Log.d("info", position + "");
-            Toast.makeText(context,"Vous voulez voir la Recette : " + Recipes.get(position).getName() , Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Vous voulez voir la Recette : " + recipeList.get(position).getName() , Toast.LENGTH_SHORT).show();
 
             // TODO : never null, why?
             FrameLayout frameLayout = view.findViewById(R.id.frame_layout_detail);
 
             if (frameLayout == null){
-                Log.d("info","send value to the DetailActivity =>"+Recipes.get(position).getName());
+                Log.d("info","send value to the DetailActivity =>"+recipeList.get(position).getName());
                 Intent intent = new Intent(context, RecipeDetailsActivity.class);
-                intent.putExtra(String.valueOf(Recipe.class), Recipes.get(position));
+                intent.putExtra(String.valueOf(Recipe.class), recipeList.get(position));
                 context.startActivity(intent);
             }
             else {
-                Log.d("info","send value to the fragment =>"+Recipes.get(position).getName());
+                Log.d("info","send value to the fragment =>"+recipeList.get(position).getName());
                 RecipeDetailsFragment detailFragment = new RecipeDetailsFragment();
                 Bundle args = new Bundle();
-                args.putSerializable(String.valueOf(Recipe.class), Recipes.get(position));
+                args.putSerializable(String.valueOf(Recipe.class), recipeList.get(position));
                 detailFragment.setArguments(args);
                 FragmentTransaction fragmentTransaction = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, detailFragment);
                 fragmentTransaction.commit();
@@ -92,11 +99,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull RecipeAdapter.ViewHolder viewHolder, int position){
-        viewHolder.display(Recipes.get(position));
+        viewHolder.display(recipeList.get(position));
     }
 
     @Override
     public int getItemCount(){
-        return Recipes.size();
+        return recipeList.size();
     }
 }
