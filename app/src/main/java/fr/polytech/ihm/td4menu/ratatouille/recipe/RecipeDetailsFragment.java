@@ -1,6 +1,5 @@
 package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -18,15 +17,15 @@ public class RecipeDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_recipe_details, container, false);
         Bundle args = getArguments();
-        TextView textView = result.findViewById(R.id.recipeNameDetail);
-
+        TextView textView = result.findViewById(R.id.recipeDetailName);
+/*
         Recipe recipe = (Recipe) getArguments().getSerializable(String.valueOf(Recipe.class));
         if(args != null && recipe != null){
             textView.setText(recipe.getName());
         }else{
             textView.setText("");
         }
-
+*/
         return result;
     }
 }

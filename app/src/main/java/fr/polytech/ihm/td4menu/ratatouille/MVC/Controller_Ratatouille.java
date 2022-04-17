@@ -1,10 +1,11 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
+import android.util.Log;
 import android.view.ViewGroup;
 
-import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 
-public class Controller_Ratatouille {
+public class Controller_Ratatouille implements IViewClick {
 
     private Model_Ratatouille model_ratatouille;
     private View_RecipeDetails view_recipeDetails;
@@ -17,23 +18,56 @@ public class Controller_Ratatouille {
         manage.findViewById(R.id.addTeam1).setOnClickListener(click ->  addPersonInTeam( manage, Model_Kindergarten.Team.TEAM1));*/
     }
 
+    /**
+     * Add a recipe
+     * @param manage
+     */
     private void addRecipe(ViewGroup manage) {
-
+        // TODO : Recupe à partir de manage ou Factory?
+        // TextView origin = manage.findId...
+        // TextView recipeName =
+        // ...
+        // Week week =
+        //Recipe recipe =
+        //model_ratatouille.addRecipe(weekNumber,recipe);
     }
 
-    private void deleteRecipe(ViewGroup manage) {
-
+    /**
+     * Add a week of recipes
+     * @param manage
+     */
+    public void addWeek(ViewGroup manage){
+        // TODO : Recupe à partir de manage ou Factory?
+        // int id = manage.findId...
+        // List<Recipe> =
+        // ...
+        // Week week =
+        //model_ratatouille.addWeek(weekNumber,week);
     }
 
-    public void addWeek(int weekNumber){
-
+    /**
+     * Delete a recipe
+     * @param weekNumber
+     * @param id
+     */
+    private void deleteRecipe(int weekNumber,int id) {
+        model_ratatouille.deleteRecipe(weekNumber,id);
     }
 
-    private void deleteWeek(ViewGroup manage) {
-
+    /**
+     * Delete a week of recipes
+     * @param weekNumber
+     */
+    private void deleteWeek(int weekNumber) {
+        model_ratatouille.deleteWeek(weekNumber);
     }
 
-    public Week getWeek(){ // TODO : voir la pertinence; Dans view?
-        return null;
+    // Je veux afficher la recette cliquée
+    @Override
+    public void onClickItem(int weekNumber, int recipeID){
+        Log.d("info", "id item clicked = " + recipeID +". Week = " +weekNumber);
+        if (model_ratatouille.size()>0) {
+            model_ratatouille.recipeClick(weekNumber,recipeID);
+        }
     }
 }

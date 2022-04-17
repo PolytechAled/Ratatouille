@@ -31,9 +31,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".MenuRemovedActivity"
-            android:exported="false" />
-        <activity
             android:name=".CreationTimeActivity"
             android:exported="false" />
         <activity
@@ -41,9 +38,6 @@
             android:exported="false" />
         <activity
             android:name=".AddCategoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TakePictureActivity"
             android:exported="false" />
         <activity
             android:name=".EditingCustomRecipeActivity"

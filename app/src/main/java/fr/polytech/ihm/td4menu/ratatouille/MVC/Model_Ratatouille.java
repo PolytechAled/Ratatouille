@@ -12,6 +12,7 @@ import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
 
 public class Model_Ratatouille extends Observable {
     private Map<Integer, Week> recipeList;
+    private Recipe recipeShow;
     private Controller_Ratatouille controller_Ratatouille;
 
     public void setController(Controller_Ratatouille controller_Ratatouille) {
@@ -21,6 +22,7 @@ public class Model_Ratatouille extends Observable {
     public Model_Ratatouille(Controller_Ratatouille controller_Ratatouille) {
         this.recipeList = new HashMap<>();
         this.controller_Ratatouille = controller_Ratatouille;
+        this.recipeShow = null;
     }
 
     public void build(){
@@ -35,6 +37,9 @@ public class Model_Ratatouille extends Observable {
         recipes.add(new Recipe(6, "Recette7", "France", 10));
 
         this.recipeList.put(0,new Week(recipes));
+
+        setChanged();
+        notifyObservers();
     }
 
     public Week getRecipeList(int weekNumber) {
@@ -51,9 +56,15 @@ public class Model_Ratatouille extends Observable {
         return recipeList.size();
     }
 
-    public void add(int weekNumber, Recipe recipe) {
+    public void addRecipe(int weekNumber, Recipe recipe) {
         Week week = recipeList.get(weekNumber);
         week.addRecipe(recipe);
+        recipeList.put(weekNumber,week);
+        setChanged();
+        notifyObservers();
+    }
+
+    public void addWeek(int weekNumber,Week week){
         recipeList.put(weekNumber,week);
         setChanged();
         notifyObservers();
@@ -63,7 +74,7 @@ public class Model_Ratatouille extends Observable {
         return this.recipeList.keySet().stream().max(Integer::compare).get();
     }
 
-    public void removeWeek(int weekNumber) {
+    public void deleteWeek(int weekNumber) {
         if (weekNumber < this.getMaxKeyList()) {
             recipeList.remove(weekNumber);
             setChanged();
@@ -71,13 +82,20 @@ public class Model_Ratatouille extends Observable {
         }
     }
 
-    public void removeARecipe(int weekNumber, Recipe recipe) {
+    public void deleteRecipe(int weekNumber, int id) {
         if (weekNumber < this.getMaxKeyList()) {
             Week week = recipeList.get(weekNumber);
-            week.removeRecipe(recipe);
+            week.removeRecipe(id);
             recipeList.put(weekNumber,week);
             setChanged();
             notifyObservers();
         }
+    }
+
+    public void recipeClick(int weekNumber, int recipeID) {
+        Week week = recipeList.get(weekNumber);
+        this.recipeShow = week.getRecipe(recipeID);
+        setChanged();
+        notifyObservers();
     }
 }
