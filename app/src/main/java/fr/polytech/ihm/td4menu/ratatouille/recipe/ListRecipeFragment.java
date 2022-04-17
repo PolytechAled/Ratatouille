@@ -23,7 +23,6 @@ public class ListRecipeFragment extends Fragment {
 
         recyclerView = result.findViewById(R.id.recipeListFragment);
 
-
         Recipes.add(new Recipe(0, "Recette1", "France", 75));
         Recipes.add(new Recipe(1, "Recette2", "France", 15));
         Recipes.add(new Recipe(2, "Recette3", "Belgique", 56));
