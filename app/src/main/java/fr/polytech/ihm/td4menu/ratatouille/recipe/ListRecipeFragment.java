@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
@@ -23,13 +24,50 @@ public class ListRecipeFragment extends Fragment {
 
         recyclerView = result.findViewById(R.id.recipeListFragment);
 
-        Recipes.add(new Recipe(0, "Recette1", "France", 75));
-        Recipes.add(new Recipe(1, "Recette2", "France", 15));
-        Recipes.add(new Recipe(2, "Recette3", "Belgique", 56));
-        Recipes.add(new Recipe(3, "Recette4", "Chine", 45));
-        Recipes.add(new Recipe(4, "Recette5", "Ecosse", 45));
-        Recipes.add(new Recipe(5, "Recette6", "Espagne", 15));
-        Recipes.add(new Recipe(6, "Recette7", "France", 10));
+        new Thread(() -> {
+            Recipe recipe = new Recipe(0, "Recette1");
+            recipe.setOrigin("France");
+            recipe.setCookingTime(75);
+            Recipes.add(recipe);
+
+            recipe = new Recipe(1, "Recette2");
+            recipe.setOrigin("France");
+            recipe.setCookingTime(15);
+            Recipes.add(recipe);
+
+            recipe = new Recipe(2, "Recette3");
+            recipe.setOrigin("Belgique");
+            recipe.setCookingTime(56);
+            Recipes.add(recipe);
+
+            recipe = new Recipe(3, "Recette4");
+            recipe.setOrigin("Chine");
+            recipe.setCookingTime(45);
+            Recipes.add(recipe);
+
+            recipe = new Recipe(4, "Recette5");
+            recipe.setOrigin("Ecosse");
+            recipe.setCookingTime(45);
+            Recipes.add(recipe);
+
+            recipe = new Recipe(5, "Recette6");
+            recipe.setOrigin("Espagne");
+            recipe.setCookingTime(15);
+            Recipes.add(recipe);
+
+            recipe = new Recipe(6, "Recette7");
+            recipe.setOrigin("France");
+            recipe.setCookingTime(10);
+            Recipes.add(recipe);
+
+            try {
+                recipe = Recipe.instantiate(DataSource.SPOONACULAR, 716429);
+
+                Recipes.add(recipe);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
 
         recipeAdapter = new RecipeAdapter(result.getContext());
 

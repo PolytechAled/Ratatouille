@@ -15,6 +15,8 @@ public class Recipe implements Serializable {
     protected final int id;
     protected int relId;
 
+    protected boolean populated;
+
     /**
      * Cooking time in minutes.
      */
@@ -51,18 +53,9 @@ public class Recipe implements Serializable {
      */
     protected List<RecipeCategory> categoryList;
 
-    public Recipe(int id, String name, String origin, int cookingTime) {
+    public Recipe(int id, String name) {
         this.id = relId = id;
         this.name = name;
-        this.cookingTime = cookingTime;
-        this.origin = origin;
-        this.hasOrigin = true;
-    }
-
-    public Recipe(int id, String name, int cookingTime) {
-        this.id = relId = id;
-        this.name = name;
-        this.cookingTime = cookingTime;
         this.hasOrigin = false;
     }
 
@@ -74,10 +67,10 @@ public class Recipe implements Serializable {
             case SPOONACULAR:
                 Spoonacular recipeApi = new Spoonacular();
 
-                return recipeApi.getRecipe(relId);
+                return recipeApi.populateRecipe(relId);
 
             case EDAMAM:
-                throw new UnsupportedOperationException("Edamam API is not implemented yet.");
+                throw new UnsupportedOperationException("The Edamam API is not implemented yet.");
         }
 
         throw new UnsupportedOperationException("Could not find a supported API (" + source.name() + ").");
@@ -132,6 +125,14 @@ public class Recipe implements Serializable {
         isCustom = custom;
     }
 
+    public boolean isPopulated() {
+        return populated;
+    }
+
+    public void setPopulated(boolean populated) {
+        this.populated = populated;
+    }
+
     public Optional<String> getOrigin() {
         return hasOrigin ? Optional.of(origin) : Optional.empty();
     }
@@ -146,10 +147,6 @@ public class Recipe implements Serializable {
 
     public List<RecipeCategory> getCategoryList() {
         return categoryList;
-    }
-
-    public static SpRecipe newSpRecipe(int relId, String title, int cookingTime){
-        return new SpRecipe((relId + DataSource.SPOONACULAR.name()).hashCode(), title, cookingTime);
     }
 
     @Override

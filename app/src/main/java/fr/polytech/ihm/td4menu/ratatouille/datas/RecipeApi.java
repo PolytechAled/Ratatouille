@@ -1,9 +1,8 @@
 package fr.polytech.ihm.td4menu.ratatouille.datas;
 
-import org.json.JSONException;
-
-import java.io.IOException;
+import java.util.List;
 
 public abstract class RecipeApi {
-    public abstract Recipe getRecipe(int relId) throws JSONException, IOException;
+    public abstract Recipe populateRecipe(int relId) throws Exception;
+    public abstract List<Recipe> searchRecipes(String query) throws Exception;
 }
