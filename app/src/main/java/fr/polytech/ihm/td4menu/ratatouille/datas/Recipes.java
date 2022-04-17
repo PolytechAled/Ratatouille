@@ -2,6 +2,7 @@ package fr.polytech.ihm.td4menu.ratatouille.datas;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Recipes {
@@ -27,5 +28,12 @@ public class Recipes {
 
     public static int size() {
         return instance.recipeList.size();
+    }
+
+    public static void newWeek(List<Recipe> recipes){
+        instance.recipeList = null;
+        for(int i = 0; i < recipes.size(); i++){
+            instance.recipeList.put(recipes.get(i).getId(), recipes.get(i));
+        }
     }
 }

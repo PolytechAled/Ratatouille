@@ -98,4 +98,8 @@ public class Model_Ratatouille extends Observable {
         setChanged();
         notifyObservers();
     }
+
+    public Recipe getRecipeShow() {
+        return recipeShow;
+    }
 }
