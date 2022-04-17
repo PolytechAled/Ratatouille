@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".recipe.RecipeDetailsFragment">
+
+    <!-- child views -->
+
+    <TextView
+        android:id="@+id/recipeDetailName"
+        android:layout_width="181dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="RECIPE NAME"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/recipeDetailInstructions"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/recipeDetailName"
+        app:layout_constraintStart_toStartOf="@+id/recipeDetailName"
+        app:layout_constraintTop_toBottomOf="@+id/recipeDetailName">
+
+        <ImageView
+            android:id="@+id/cookingTimeIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="@dimen/margin"
+            app:srcCompat="@drawable/ic_baseline_clock_24" />
+
+        <TextView
+            android:id="@+id/recipeDetailTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temps de préparation" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/recipeDetailImage"
+        android:layout_width="140dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/img"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridView
+        android:id="@+id/recipeDetailPictos"
+        android:layout_width="135dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/recipeDetailIngredients"
+        app:layout_constraintEnd_toEndOf="@+id/recipeDetailIngredients"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="@+id/recipeDetailIngredients" />
+
+    <ListView
+        android:id="@+id/recipeDetailIngredients"
+        android:layout_width="150dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredients" />
+
+    <ListView
+        android:id="@+id/recipeDetailInstructions"
+        android:layout_width="184dp"
+        android:layout_height="234dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="91dp"
+        app:layout_constraintStart_toEndOf="@+id/recipeDetailIngredients"
+        app:layout_constraintTop_toBottomOf="@+id/recipeDetailName" />
+
+    <TextView
+        android:id="@+id/ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingedients"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recipeDetailIngredients"
+        app:layout_constraintEnd_toEndOf="@+id/recipeDetailIngredients"
+        app:layout_constraintStart_toStartOf="@+id/recipeDetailIngredients" />
+
+    <TextView
+        android:id="@+id/informations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Informations"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recipeDetailPictos"
+        app:layout_constraintEnd_toEndOf="@+id/recipeDetailPictos"
+        app:layout_constraintStart_toStartOf="@+id/recipeDetailPictos"
+        app:layout_constraintTop_toTopOf="@+id/Instructions" />
+
+    <TextView
+        android:id="@+id/Instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instructions"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recipeDetailInstructions"
+        app:layout_constraintEnd_toEndOf="@+id/recipeDetailInstructions"
+        app:layout_constraintStart_toStartOf="@+id/recipeDetailInstructions" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
