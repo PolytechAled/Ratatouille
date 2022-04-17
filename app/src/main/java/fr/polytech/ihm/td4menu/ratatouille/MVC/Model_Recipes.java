@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.datas;
+package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Optional;
+
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
 
 public class Model_Recipes extends Observable {
     private Map<Integer, Week> recipeList;
