@@ -7,10 +7,7 @@ import java.util.Observer;
 
 import fr.polytech.ihm.td4menu.ratatouille.recipe.RecipeAdapter;
 
-public class View_Recipes implements Observer {
-    private Controller_Ratatouille controller_ratatouille;
-    private RecipeAdapter recipeAdapter;
-    private RecyclerView recyclerView;
+public class View_RecipeDetails implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {

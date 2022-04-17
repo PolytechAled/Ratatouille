@@ -10,7 +10,7 @@ import java.util.Optional;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
 
-public class Model_Recipes extends Observable {
+public class Model_Ratatouille extends Observable {
     private Map<Integer, Week> recipeList;
     private Controller_Ratatouille controller_Ratatouille;
 
@@ -18,7 +18,7 @@ public class Model_Recipes extends Observable {
         this.controller_Ratatouille = controller_Ratatouille;
     }
 
-    public Model_Recipes(Controller_Ratatouille controller_Ratatouille) {
+    public Model_Ratatouille(Controller_Ratatouille controller_Ratatouille) {
         this.recipeList = new HashMap<>();
         this.controller_Ratatouille = controller_Ratatouille;
     }
