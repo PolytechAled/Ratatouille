@@ -7,25 +7,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 
 public class RecipeDetailsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View result = inflater.inflate(R.layout.recipe_view, null);
-        /*
-        Bundle arguments = getArguments();
-        TextView displayValue = result.findViewById(R.id.editView);
-        if(arguments!=null) {
-            int valeur = getArguments().getInt(getString(R.string.value));
-            displayValue.setText(Integer.toString(valeur));
+        View result = inflater.inflate(R.layout.fragment_recipe_details, container, false);
+        Bundle args = getArguments();
+        TextView textView = result.findViewById(R.id.recipeNameDetail);
+
+        Recipe recipe = (Recipe) getArguments().getSerializable(String.valueOf(Recipe.class));
+        if(args != null && recipe != null){
+            textView.setText(recipe.getName());
+        }else{
+            textView.setText("");
         }
-        else {
-            displayValue.setText("still none");
-        }
-        */
 
         return result;
     }

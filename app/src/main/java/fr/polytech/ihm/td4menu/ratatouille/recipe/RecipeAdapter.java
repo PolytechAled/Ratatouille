@@ -43,7 +43,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         }
 
         public void display(Recipe recipe){
-            recipeName.setText(recipe.getName());
+            if(recipe != null)
+                recipeName.setText(recipe.getName());
         }
 
         @Override
