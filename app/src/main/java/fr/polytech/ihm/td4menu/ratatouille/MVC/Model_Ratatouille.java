@@ -28,13 +28,40 @@ public class Model_Ratatouille extends Observable {
     public void build(){
         List<Recipe> recipes = new ArrayList<>();
 
-        recipes.add(new Recipe(0, "Recette1", "France", 75));
-        recipes.add(new Recipe(1, "Recette2", "France", 15));
-        recipes.add(new Recipe(2, "Recette3", "Belgique", 56));
-        recipes.add(new Recipe(3, "Recette4", "Chine", 45));
-        recipes.add(new Recipe(4, "Recette5", "Ecosse", 45));
-        recipes.add(new Recipe(5, "Recette6", "Espagne", 15));
-        recipes.add(new Recipe(6, "Recette7", "France", 10));
+        Recipe recipe = new Recipe(0, "Recette1");
+        recipe.setOrigin("France");
+        recipe.setCookingTime(75);
+        recipes.add(recipe);
+
+        recipe = new Recipe(1, "Recette2");
+        recipe.setOrigin("France");
+        recipe.setCookingTime(15);
+        recipes.add(recipe);
+
+        recipe = new Recipe(2, "Recette3");
+        recipe.setOrigin("Belgique");
+        recipe.setCookingTime(56);
+        recipes.add(recipe);
+
+        recipe = new Recipe(3, "Recette4");
+        recipe.setOrigin("Chine");
+        recipe.setCookingTime(45);
+        recipes.add(recipe);
+
+        recipe = new Recipe(4, "Recette5");
+        recipe.setOrigin("Ecosse");
+        recipe.setCookingTime(45);
+        recipes.add(recipe);
+
+        recipe = new Recipe(5, "Recette6");
+        recipe.setOrigin("Espagne");
+        recipe.setCookingTime(15);
+        recipes.add(recipe);
+
+        recipe = new Recipe(6, "Recette7");
+        recipe.setOrigin("France");
+        recipe.setCookingTime(10);
+        recipes.add(recipe);
 
         this.recipeList.put(0,new Week(recipes));
 
