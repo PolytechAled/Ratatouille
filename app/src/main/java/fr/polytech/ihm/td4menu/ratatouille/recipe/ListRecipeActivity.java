@@ -14,6 +14,8 @@ public class ListRecipeActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_recipe);
 
+
+
         //display detailFragment if exists
         if (findViewById(R.id.frame_layout_detail) != null) {
             RecipeDetailsFragment recipeDetailsFragment = new RecipeDetailsFragment();

@@ -30,7 +30,7 @@ public class Recipes {
         return instance.recipeList.size();
     }
 
-    public static void newWeek(List<Recipe> recipes){
+    public static void addRecipeList(List<Recipe> recipes){
         instance.recipeList = null;
         for(int i = 0; i < recipes.size(); i++){
             instance.recipeList.put(recipes.get(i).getId(), recipes.get(i));

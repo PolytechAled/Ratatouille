@@ -9,10 +9,19 @@ public class Controller_Ratatouille implements IViewClick {
 
     private Model_Ratatouille model_ratatouille;
     private View_RecipeDetails view_recipeDetails;
+    private View_ListRecipe view_listRecipe;
 
     public Controller_Ratatouille(Model_Ratatouille model_ratatouille, View_RecipeDetails view_recipeDetails) {
         this.model_ratatouille = model_ratatouille;
         this.view_recipeDetails = view_recipeDetails;
+/*
+        LinearLayout manage = ((ConstraintLayout)view.getLayout()).findViewById(R.id.manage);
+        manage.findViewById(R.id.addTeam1).setOnClickListener(click ->  addPersonInTeam( manage, Model_Kindergarten.Team.TEAM1));*/
+    }
+
+    public Controller_Ratatouille(Model_Ratatouille model_ratatouille, View_ListRecipe view_listRecipe) {
+        this.model_ratatouille = model_ratatouille;
+        this.view_listRecipe = view_listRecipe;
 /*
         LinearLayout manage = ((ConstraintLayout)view.getLayout()).findViewById(R.id.manage);
         manage.findViewById(R.id.addTeam1).setOnClickListener(click ->  addPersonInTeam( manage, Model_Kindergarten.Team.TEAM1));*/
@@ -64,10 +73,10 @@ public class Controller_Ratatouille implements IViewClick {
 
     // Je veux afficher la recette cliquée
     @Override
-    public void onClickItem(int weekNumber, int recipeID){
-        Log.d("info", "id item clicked = " + recipeID +". Week = " +weekNumber);
+    public void onClickItem(int recipeID){
+        Log.d("info", "id item clicked = " + recipeID +". Week = " +model_ratatouille.getWeekNumber());
         if (model_ratatouille.size()>0) {
-            model_ratatouille.recipeClick(weekNumber,recipeID);
+            model_ratatouille.recipeClick(recipeID);
         }
     }
 }

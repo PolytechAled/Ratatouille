@@ -13,6 +13,7 @@ import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
 public class Model_Ratatouille extends Observable {
     private Map<Integer, Week> recipeList;
     private Recipe recipeShow;
+    private int weekNumber;
     private Controller_Ratatouille controller_Ratatouille;
 
     public void setController(Controller_Ratatouille controller_Ratatouille) {
@@ -20,6 +21,7 @@ public class Model_Ratatouille extends Observable {
     }
 
     public Model_Ratatouille(Controller_Ratatouille controller_Ratatouille) {
+        super();
         this.recipeList = new HashMap<>();
         this.controller_Ratatouille = controller_Ratatouille;
         this.recipeShow = null;
@@ -63,7 +65,7 @@ public class Model_Ratatouille extends Observable {
         recipe.setCookingTime(10);
         recipes.add(recipe);
 
-        this.recipeList.put(0,new Week(recipes));
+        this.recipeList.put(0,new Week(recipes,0));
 
         setChanged();
         notifyObservers();
@@ -119,14 +121,28 @@ public class Model_Ratatouille extends Observable {
         }
     }
 
-    public void recipeClick(int weekNumber, int recipeID) {
+    public void recipeClick(int recipeID) {
         Week week = recipeList.get(weekNumber);
-        this.recipeShow = week.getRecipe(recipeID);
+        this.recipeShow = week.getRecipeId(recipeID);
         setChanged();
         notifyObservers();
     }
 
     public Recipe getRecipeShow() {
         return recipeShow;
+    }
+
+    public void recipesWeek(int weekNumber){
+        this.weekNumber = weekNumber;
+    }
+
+    public int getWeekNumber() {
+        return weekNumber;
+    }
+
+    public Recipe getRecipePosition(int adapterPosition) {
+        Week week = this.recipeList.get(this.weekNumber);
+        Recipe recipe = week.getRecipePosition(adapterPosition);
+        return recipe;
     }
 }

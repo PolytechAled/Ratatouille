@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.MVC.View_ListRecipe;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
@@ -27,12 +30,23 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     Context context;
     List<Recipe> recipeList;
+    View_ListRecipe view_listRecipe;
+    Model_Ratatouille model_ratatouille;
 
-    public RecipeAdapter(Context context) {
+    public RecipeAdapter(Context context, View_ListRecipe view_listRecipe) {
         this.context = context;
         this.recipeList = new ArrayList<>();
+        this.recipeList.addAll(Recipes.getRecipeList());
+        this.view_listRecipe = view_listRecipe;
+    }
 
-        recipeList.addAll(Recipes.getRecipeList());
+    public void updateModel(Model_Ratatouille model) {
+        this.model_ratatouille = model;
+    }
+
+    public void refresh(Model_Ratatouille model) {
+        this.model_ratatouille = model;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
@@ -41,12 +55,28 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
         ViewHolder(View v){
             super(v);
-
+            ConstraintLayout layoutItem;
+            /*
             this.v = v;
             recipeName = v.findViewById(R.id.recipeName);
-
             v.setOnClickListener(this);
             v.setOnLongClickListener(this);
+            */
+
+            //(1) : Réutilisation des layouts
+            //layoutItem = (ConstraintLayout) (v == null ? inflater.inflate(R.layout.view_adapter, parent, false) : view);
+            //layoutItem = ((ConstraintLayout) v==null?v.findViewById(R.layout.fragment_list_recipe) : v);
+
+            //(2) : Récupération des TextView de notre layout
+            recipeName = v.findViewById(R.id.recipeName);
+
+            //(3) : Renseignement des valeurs
+            Recipe recipe = model_ratatouille.getRecipePosition(getAdapterPosition());
+
+            recipeName.setText( recipe.getName()+"" );
+
+            //écouter si clic sur la vue
+            v.setOnClickListener( clic ->  view_listRecipe.onClickItem(recipe.getId()));
         }
 
         public void display(Recipe recipe){
@@ -61,6 +91,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             Log.d("info", position + "");
             Toast.makeText(context,"Vous voulez voir la Recette : " + recipeList.get(position).getName() , Toast.LENGTH_SHORT).show();
 
+            // Informe le model de la recette selectionné
+            //model_ratatouille.recipeClick(recipeList.get(position).getId());
+
+
+            /*
             // TODO : never null, why?
             FrameLayout frameLayout = view.findViewById(R.id.frame_layout_detail);
 
@@ -80,6 +115,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                 fragmentTransaction.commit();
             }
 
+
+ */
         }
 
         @Override

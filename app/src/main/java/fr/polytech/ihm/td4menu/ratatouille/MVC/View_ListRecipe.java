@@ -1,5 +1,8 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Optional;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
@@ -20,7 +24,14 @@ public class View_ListRecipe implements Observer {
     private Controller_Ratatouille controller_ratatouille;
     private RecipeAdapter recipeAdapter;
     private RecyclerView recyclerView;
+    private boolean modelCreated = false;
     private ViewGroup layout;
+
+    public <T extends ViewGroup> View_ListRecipe(Context context, ViewGroup layout) {
+        this.recipeAdapter = new RecipeAdapter(context, this); //carrefull, model is null !
+        this.layout = layout;
+        Log.d("info", "View is created" );
+    }
 
     public ViewGroup getLayout() {
         return layout;
@@ -30,27 +41,21 @@ public class View_ListRecipe implements Observer {
         this.controller_ratatouille = controller;
     }
 
-    public void onClickItem(int weekNumber, int recipeID){
-        this.controller_ratatouille.onClickItem(weekNumber, recipeID);
+    public void onClickItem(int recipeID){
+        this.controller_ratatouille.onClickItem(recipeID);
     }
 
     @Override
     public void update(Observable observable, Object o) {
-        View result = layout.findViewById(R.id.fragment_recipe_list);
-        recipeAdapter = new RecipeAdapter(result.getContext());
-        recyclerView = result.findViewById(R.id.recipeListFragment);
-
         Model_Ratatouille model = (Model_Ratatouille) observable;
 
-
-        // TODO : Comment recup le numero de semaine?
-        Week week = model.getRecipeList(0);
-        //Recipes.
-
-
-
-        //recyclerView.setAdapter(recipeAdapter);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(result.getContext(),LinearLayoutManager.VERTICAL, false));
-
+        if (!modelCreated) {
+            recipeAdapter.updateModel(model);
+            RecyclerView recyclerView = layout.findViewById(R.id.recipeListFragment);
+            recyclerView.setAdapter(recipeAdapter);
+            modelCreated = true;
+        }else {
+            recipeAdapter.refresh(model);
+        }
     }
 }

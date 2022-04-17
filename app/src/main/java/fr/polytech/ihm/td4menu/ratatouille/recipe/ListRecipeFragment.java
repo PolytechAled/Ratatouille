@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import fr.polytech.ihm.td4menu.ratatouille.MVC.Controller_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.MVC.View_ListRecipe;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
@@ -22,8 +25,7 @@ public class ListRecipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_list_recipe, null);
 
-        recyclerView = result.findViewById(R.id.recipeListFragment);
-
+/*
         new Thread(() -> {
             Recipe recipe = new Recipe(0, "Recette1");
             recipe.setOrigin("France");
@@ -68,11 +70,19 @@ public class ListRecipeFragment extends Fragment {
                 e.printStackTrace();
             }
         }).start();
+*/
 
-        recipeAdapter = new RecipeAdapter(result.getContext());
+        //create VIEW with XML layout
+        View_ListRecipe view = new View_ListRecipe( getActivity().getApplicationContext(), (ViewGroup) result);
+        Model_Ratatouille model = new Model_Ratatouille(null);    //controller not still created so the controller reference will be sent later
+        model.addObserver(view);    //MODEL is observable from VIEW
 
-        recyclerView.setAdapter(recipeAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(result.getContext(),LinearLayoutManager.VERTICAL, false));
+        // TODO : Just for exemple
+        model.build();
+
+        Controller_Ratatouille controller = new Controller_Ratatouille( model,view );
+        model.setController(controller);
+        view.setListener( controller );
 
         return result;
     }
