@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin"
     android:background="@drawable/rounded_corners"
-    android:backgroundTint="@color/purple_200"
+    android:backgroundTint="?attr/colorPrimary"
     android:foreground="?attr/selectableItemBackground">
 
     <TextView
