@@ -33,10 +33,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     View_ListRecipe view_listRecipe;
     Model_Ratatouille model_ratatouille;
 
-    public RecipeAdapter(Context context, View_ListRecipe view_listRecipe) {
+    public RecipeAdapter(Context context, View_ListRecipe view_listRecipe, Model_Ratatouille model_ratatouille) {
+        this.model_ratatouille = model_ratatouille;
         this.context = context;
         this.recipeList = new ArrayList<>();
-        this.recipeList.addAll(Recipes.getRecipeList());
+        List<Recipe> list = model_ratatouille.getRecipeList(model_ratatouille.getWeekNumber()).getRecipeList();
+        this.recipeList.addAll(list);
         this.view_listRecipe = view_listRecipe;
     }
 
@@ -56,6 +58,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         ViewHolder(View v){
             super(v);
             ConstraintLayout layoutItem;
+            int positionAdapter = getLayoutPosition();
 /*
             this.v = v;
             recipeName = v.findViewById(R.id.recipeName);
@@ -71,12 +74,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             recipeName = v.findViewById(R.id.recipeName);
 
             //(3) : Renseignement des valeurs
-            Recipe recipe = model_ratatouille.getRecipePosition(getAdapterPosition());
+            //Recipe recipe = model_ratatouille.getRecipePosition(getAdapterPosition());
 
-            recipeName.setText( recipe.getName()+"" );
+            //recipeName.setText( recipe.getName()+"" );
 
             //écouter si clic sur la vue
-            v.setOnClickListener( clic ->  view_listRecipe.onClickItem(recipe.getId()));
+            v.setOnClickListener( clic ->  view_listRecipe.onClickItem(model_ratatouille.getRecipePosition(getAdapterPosition()).getId()));
         }
 
         public void display(Recipe recipe){

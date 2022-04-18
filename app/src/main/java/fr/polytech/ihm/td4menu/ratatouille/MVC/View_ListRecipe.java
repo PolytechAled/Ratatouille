@@ -28,7 +28,7 @@ public class View_ListRecipe implements Observer {
     private ViewGroup layout;
 
     public <T extends ViewGroup> View_ListRecipe(Context context, ViewGroup layout) {
-        this.recipeAdapter = new RecipeAdapter(context, this); //carrefull, model is null !
+        //this.recipeAdapter = new RecipeAdapter(context, this); //carrefull, model is null !
         this.layout = layout;
         Log.d("info", "View is created" );
     }
@@ -50,17 +50,17 @@ public class View_ListRecipe implements Observer {
         Model_Ratatouille model = (Model_Ratatouille) observable;
 
         if (!modelCreated) {
-            recipeAdapter.updateModel(model);
+            //recipeAdapter.updateModel(model);
+            this.recipeAdapter = new RecipeAdapter(this.layout.getContext(), this,model);
 
-            RecyclerView recyclerView = layout.findViewById(R.id.recipeListFragment);
-            recyclerView.setAdapter(recipeAdapter);
-            recipeAdapter = new RecipeAdapter(layout.getContext(), this);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getLayout().getContext()));
-            recyclerView.setAdapter(recipeAdapter);
+            this.recyclerView = layout.findViewById(R.id.recipeListFragment);
+            this.recyclerView.setAdapter(this.recipeAdapter);
+            this.recyclerView.setLayoutManager(new LinearLayoutManager(getLayout().getContext()));
+            this.recyclerView.setAdapter(this.recipeAdapter);
 
             modelCreated = true;
         }else {
-            recipeAdapter.refresh(model);
+            this.recipeAdapter.refresh(model);
         }
     }
 }

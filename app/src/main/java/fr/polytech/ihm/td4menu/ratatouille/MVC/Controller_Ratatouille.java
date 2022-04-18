@@ -2,6 +2,7 @@ package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
 import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 
