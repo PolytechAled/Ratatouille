@@ -1,6 +1,7 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
-import java.io.Serializable;
+import android.view.ViewGroup;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
 public class Model_Ratatouille extends Observable{
     private Map<Integer, Week> recipeList;
@@ -17,6 +19,7 @@ public class Model_Ratatouille extends Observable{
     private int weekNumber;
     private Controller_Ratatouille controller_Ratatouille;
     private VIEW_TYPE updateType;
+    private ViewGroup layout;
 
     public enum VIEW_TYPE{
         VIEW_LISTRECIPE,
@@ -130,12 +133,17 @@ public class Model_Ratatouille extends Observable{
         }
     }
 
-    public void recipeClick(int recipeID) {
+    public void recipeClick(int recipeID, ViewGroup layout) {
         Week week = recipeList.get(weekNumber);
         this.recipeShow = week.getRecipeId(recipeID);
         this.updateType = VIEW_TYPE.VIEW_DETAILSRECIPE;
+        this.layout = layout;
         setChanged();
         notifyObservers();
+    }
+
+    public ViewGroup getLayout() {
+        return layout;
     }
 
     public Recipe getRecipeShow() {

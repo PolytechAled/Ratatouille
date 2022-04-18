@@ -53,7 +53,7 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
             RecipeDetailsFragment detailFragment = new RecipeDetailsFragment();
             FragmentTransaction fragmentTransaction = ((FragmentActivity)this).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, detailFragment);
             fragmentTransaction.commit();
-            model_ratatouille.recipeClick(recipeList.get(position).getId());
+            model_ratatouille.recipeClick(recipeList.get(position).getId(), findViewById(R.id.frame_layout_detail));
         }
     }
 }

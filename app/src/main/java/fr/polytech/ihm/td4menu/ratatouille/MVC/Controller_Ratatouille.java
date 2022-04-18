@@ -65,7 +65,7 @@ public class Controller_Ratatouille implements IViewClick {
     public void onClickItem(int recipeID){
         Log.d("info", "id item clicked = " + recipeID +". Week = " +model_ratatouille.getWeekNumber());
         if (model_ratatouille.size()>0) {
-            model_ratatouille.recipeClick(recipeID);
+            model_ratatouille.recipeClick(recipeID,null);
         }
     }
 }
