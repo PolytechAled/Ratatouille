@@ -6,17 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Controller_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
-import fr.polytech.ihm.td4menu.ratatouille.MVC.View_ListRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
-import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeFactory;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 public class ListRecipeFragment extends Fragment {
     private RecipeAdapter recipeAdapter;
@@ -74,7 +69,7 @@ public class ListRecipeFragment extends Fragment {
 */
 
         //create VIEW with XML layout
-        View_ListRecipe view = new View_ListRecipe( getActivity().getApplicationContext(), (ViewGroup) result);
+        View_Ratatouille view = new View_Ratatouille( getActivity().getApplicationContext(), (ViewGroup) result);
         Model_Ratatouille model = new Model_Ratatouille(null);    //controller not still created so the controller reference will be sent later
         model.addObserver(view);    //MODEL is observable from VIEW
 

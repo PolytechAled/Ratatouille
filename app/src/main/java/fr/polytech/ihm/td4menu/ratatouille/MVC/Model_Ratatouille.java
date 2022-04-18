@@ -1,5 +1,6 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,11 +11,17 @@ import java.util.Optional;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
 
-public class Model_Ratatouille extends Observable {
+public class Model_Ratatouille extends Observable{
     private Map<Integer, Week> recipeList;
     private Recipe recipeShow;
     private int weekNumber;
     private Controller_Ratatouille controller_Ratatouille;
+    private VIEW_TYPE updateType;
+
+    public enum VIEW_TYPE{
+        VIEW_LISTRECIPE,
+        VIEW_DETAILSRECIPE;
+    }
 
     public void setController(Controller_Ratatouille controller_Ratatouille) {
         this.controller_Ratatouille = controller_Ratatouille;
@@ -66,6 +73,8 @@ public class Model_Ratatouille extends Observable {
         recipes.add(recipe);
 
         this.recipeList.put(0,new Week(recipes,0));
+
+        this.updateType = VIEW_TYPE.VIEW_LISTRECIPE;
 
         setChanged();
         notifyObservers();
@@ -124,6 +133,7 @@ public class Model_Ratatouille extends Observable {
     public void recipeClick(int recipeID) {
         Week week = recipeList.get(weekNumber);
         this.recipeShow = week.getRecipeId(recipeID);
+        this.updateType = VIEW_TYPE.VIEW_DETAILSRECIPE;
         setChanged();
         notifyObservers();
     }
@@ -144,5 +154,9 @@ public class Model_Ratatouille extends Observable {
         Week week = this.recipeList.get(this.weekNumber);
         Recipe recipe = week.getRecipePosition(adapterPosition);
         return recipe;
+    }
+
+    public VIEW_TYPE getUpdateType() {
+        return updateType;
     }
 }

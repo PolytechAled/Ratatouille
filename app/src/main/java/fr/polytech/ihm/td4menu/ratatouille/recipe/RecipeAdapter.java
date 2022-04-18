@@ -2,7 +2,6 @@ package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,33 +12,30 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
-import fr.polytech.ihm.td4menu.ratatouille.MVC.View_ListRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
-    Context context;
-    List<Recipe> recipeList;
-    View_ListRecipe view_listRecipe;
-    Model_Ratatouille model_ratatouille;
+    private Context context;
+    private List<Recipe> recipeList;
+    private View_Ratatouille view_ratatouille;
+    private Model_Ratatouille model_ratatouille;
 
-    public RecipeAdapter(Context context, View_ListRecipe view_listRecipe, Model_Ratatouille model_ratatouille) {
+    public RecipeAdapter(Context context, View_Ratatouille view_ratatouille, Model_Ratatouille model_ratatouille) {
         this.model_ratatouille = model_ratatouille;
         this.context = context;
         this.recipeList = new ArrayList<>();
         List<Recipe> list = model_ratatouille.getRecipeList(model_ratatouille.getWeekNumber()).getRecipeList();
         this.recipeList.addAll(list);
-        this.view_listRecipe = view_listRecipe;
+        this.view_ratatouille = view_ratatouille;
     }
 
     public void updateModel(Model_Ratatouille model) {
@@ -79,7 +75,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             //recipeName.setText( recipe.getName()+"" );
 
             //écouter si clic sur la vue
-            v.setOnClickListener( clic ->  view_listRecipe.onClickItem(model_ratatouille.getRecipePosition(getAdapterPosition()).getId()));
+            v.setOnClickListener( clic ->  view_ratatouille.onClickItem(model_ratatouille.getRecipePosition(getAdapterPosition()).getId()));
+            v.setOnClickListener(this);
         }
 
         public void display(Recipe recipe){
@@ -98,16 +95,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             //model_ratatouille.recipeClick(recipeList.get(position).getId());
 
 
-            /*
+
             // TODO : never null, why?
             FrameLayout frameLayout = view.findViewById(R.id.frame_layout_detail);
 
             if (frameLayout == null){
                 Log.d("info","send value to the DetailActivity =>"+recipeList.get(position).getName());
                 Intent intent = new Intent(context, RecipeDetailsActivity.class);
-                intent.putExtra(String.valueOf(Recipe.class), recipeList.get(position));
+                //intent.putExtra(String.valueOf(Model_Ratatouille.class), model_ratatouille);
                 context.startActivity(intent);
-            }
+            }/*
             else {
                 Log.d("info","send value to the fragment =>"+recipeList.get(position).getName());
                 RecipeDetailsFragment detailFragment = new RecipeDetailsFragment();
@@ -116,10 +113,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
                 detailFragment.setArguments(args);
                 FragmentTransaction fragmentTransaction = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, detailFragment);
                 fragmentTransaction.commit();
-            }
-
-
- */
+            }*/
         }
 
         @Override

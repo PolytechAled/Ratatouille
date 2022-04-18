@@ -2,27 +2,15 @@ package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
 import android.util.Log;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 
 public class Controller_Ratatouille implements IViewClick {
 
     private Model_Ratatouille model_ratatouille;
-    private View_RecipeDetails view_recipeDetails;
-    private View_ListRecipe view_listRecipe;
+    private View_Ratatouille view_ratatouille;
 
-    public Controller_Ratatouille(Model_Ratatouille model_ratatouille, View_RecipeDetails view_recipeDetails) {
+    public Controller_Ratatouille(Model_Ratatouille model_ratatouille, View_Ratatouille view_ratatouille) {
         this.model_ratatouille = model_ratatouille;
-        this.view_recipeDetails = view_recipeDetails;
-/*
-        LinearLayout manage = ((ConstraintLayout)view.getLayout()).findViewById(R.id.manage);
-        manage.findViewById(R.id.addTeam1).setOnClickListener(click ->  addPersonInTeam( manage, Model_Kindergarten.Team.TEAM1));*/
-    }
-
-    public Controller_Ratatouille(Model_Ratatouille model_ratatouille, View_ListRecipe view_listRecipe) {
-        this.model_ratatouille = model_ratatouille;
-        this.view_listRecipe = view_listRecipe;
+        this.view_ratatouille = view_ratatouille;
 /*
         LinearLayout manage = ((ConstraintLayout)view.getLayout()).findViewById(R.id.manage);
         manage.findViewById(R.id.addTeam1).setOnClickListener(click ->  addPersonInTeam( manage, Model_Kindergarten.Team.TEAM1));*/

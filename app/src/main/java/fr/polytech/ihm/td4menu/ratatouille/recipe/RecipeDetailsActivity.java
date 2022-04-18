@@ -6,6 +6,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
+import java.io.Serializable;
+
+import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 
@@ -21,7 +24,7 @@ public class RecipeDetailsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
         Intent intent = getIntent();
-        recipe = (Recipe) intent.getSerializableExtra(String.valueOf(Recipe.class));
+        Model_Ratatouille model_ratatouille = (Model_Ratatouille) intent.getSerializableExtra(String.valueOf(Model_Ratatouille.class));
 
 
         //display detailFragment if exists
@@ -34,7 +37,7 @@ public class RecipeDetailsActivity extends AppCompatActivity{
         if (recipeDetailsFragment == null) {
             recipeDetailsFragment = new RecipeDetailsFragment();
             Bundle args = new Bundle();
-            args.putSerializable(String.valueOf(Recipe.class), recipe);
+            args.putSerializable(String.valueOf(Model_Ratatouille.class), (Serializable) model_ratatouille);
             recipeDetailsFragment.setArguments(args);
             fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);
             fragmentTransaction.commit();
