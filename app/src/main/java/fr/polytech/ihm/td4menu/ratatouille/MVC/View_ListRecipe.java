@@ -51,8 +51,13 @@ public class View_ListRecipe implements Observer {
 
         if (!modelCreated) {
             recipeAdapter.updateModel(model);
+
             RecyclerView recyclerView = layout.findViewById(R.id.recipeListFragment);
             recyclerView.setAdapter(recipeAdapter);
+            recipeAdapter = new RecipeAdapter(layout.getContext(), this);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getLayout().getContext()));
+            recyclerView.setAdapter(recipeAdapter);
+
             modelCreated = true;
         }else {
             recipeAdapter.refresh(model);

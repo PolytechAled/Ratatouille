@@ -56,12 +56,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         ViewHolder(View v){
             super(v);
             ConstraintLayout layoutItem;
-            /*
+/*
             this.v = v;
             recipeName = v.findViewById(R.id.recipeName);
             v.setOnClickListener(this);
             v.setOnLongClickListener(this);
-            */
+      */
 
             //(1) : Réutilisation des layouts
             //layoutItem = (ConstraintLayout) (v == null ? inflater.inflate(R.layout.view_adapter, parent, false) : view);
