@@ -16,11 +16,13 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
+import java.util.zip.Inflater;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.OnButtonClickedListener;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.RecipeAdapter;
 
 public class View_Ratatouille implements Observer{
@@ -29,10 +31,12 @@ public class View_Ratatouille implements Observer{
     private RecyclerView recyclerView;
     private boolean modelCreated = false;
     private ViewGroup layout;
+    private OnButtonClickedListener callBackActivity;
 
-    public <T extends ViewGroup> View_Ratatouille(Context context, ViewGroup layout) {
+    public <T extends ViewGroup> View_Ratatouille(Context context, ViewGroup layout, OnButtonClickedListener callBackActivity) {
         //this.recipeAdapter = new RecipeAdapter(context, this); //carrefull, model is null !
         this.layout = layout;
+        this.callBackActivity = callBackActivity;
         Log.d("info", "View is created" );
     }
 
@@ -56,12 +60,13 @@ public class View_Ratatouille implements Observer{
             case VIEW_LISTRECIPE:
                 if (!modelCreated) {
                     //recipeAdapter.updateModel(model);
-                    this.recipeAdapter = new RecipeAdapter(this.layout.getContext(), this,model);
+                    this.recipeAdapter = new RecipeAdapter(this.layout.getContext(), this,model, callBackActivity);
 
                     this.recyclerView = layout.findViewById(R.id.recipeListFragment);
                     this.recyclerView.setAdapter(this.recipeAdapter);
                     this.recyclerView.setLayoutManager(new LinearLayoutManager(getLayout().getContext()));
                     this.recyclerView.setAdapter(this.recipeAdapter);
+
 
                     modelCreated = true;
                 }else {
@@ -72,9 +77,10 @@ public class View_Ratatouille implements Observer{
 
             case VIEW_DETAILSRECIPE:
                 Recipe recipe = model.getRecipeShow();
-                TextView textView = layout.findViewById(R.id.recipeName);
+                TextView textView = layout.findViewById(R.id.recipeDetailName);
                 textView.setText(recipe.getName());
                 Log.d("info","Update View detailsRecipe");
+
                 break;
         }
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public class Recipe{
+public class Recipe implements Serializable{
 
     /**
      * Unique id.

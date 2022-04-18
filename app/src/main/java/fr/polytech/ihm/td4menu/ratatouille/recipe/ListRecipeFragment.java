@@ -1,9 +1,12 @@
 package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +19,12 @@ import fr.polytech.ihm.td4menu.ratatouille.R;
 public class ListRecipeFragment extends Fragment {
     private RecipeAdapter recipeAdapter;
     private RecyclerView recyclerView;
+    private OnButtonClickedListener callBackActivity;
+    //private Model_Ratatouille model;
+
+    public ListRecipeFragment(){
+        //this.model = model;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,7 +78,7 @@ public class ListRecipeFragment extends Fragment {
 */
 
         //create VIEW with XML layout
-        View_Ratatouille view = new View_Ratatouille( getActivity().getApplicationContext(), (ViewGroup) result);
+        View_Ratatouille view = new View_Ratatouille( getActivity().getApplicationContext(), (ViewGroup) result, callBackActivity);
         Model_Ratatouille model = new Model_Ratatouille(null);    //controller not still created so the controller reference will be sent later
         model.addObserver(view);    //MODEL is observable from VIEW
 
@@ -80,6 +89,23 @@ public class ListRecipeFragment extends Fragment {
         model.setController(controller);
         view.setListener( controller );
 
+
         return result;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        createCallbackToParentActivity();
+    }
+
+
+    // Create callback to parent activity
+    private void createCallbackToParentActivity(){
+        try {
+            callBackActivity = (OnButtonClickedListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
+        }
     }
 }

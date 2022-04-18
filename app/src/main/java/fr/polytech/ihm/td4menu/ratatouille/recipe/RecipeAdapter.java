@@ -6,13 +6,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +33,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     private List<Recipe> recipeList;
     private View_Ratatouille view_ratatouille;
     private Model_Ratatouille model_ratatouille;
+    private OnButtonClickedListener callBackActivity;
 
-    public RecipeAdapter(Context context, View_Ratatouille view_ratatouille, Model_Ratatouille model_ratatouille) {
+    public RecipeAdapter(Context context, View_Ratatouille view_ratatouille, Model_Ratatouille model_ratatouille, OnButtonClickedListener callBackActivity) {
         this.model_ratatouille = model_ratatouille;
         this.context = context;
         this.recipeList = new ArrayList<>();
         List<Recipe> list = model_ratatouille.getRecipeList(model_ratatouille.getWeekNumber()).getRecipeList();
         this.recipeList.addAll(list);
         this.view_ratatouille = view_ratatouille;
+        this.callBackActivity = callBackActivity;
     }
 
     public void updateModel(Model_Ratatouille model) {
@@ -75,8 +82,11 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             //recipeName.setText( recipe.getName()+"" );
 
             //écouter si clic sur la vue
-            v.setOnClickListener( clic ->  view_ratatouille.onClickItem(model_ratatouille.getRecipePosition(getAdapterPosition()).getId()));
-            v.setOnClickListener(this);
+            //v.setOnClickListener( clic ->  view_ratatouille.onClickItem(model_ratatouille.getRecipePosition(getAdapterPosition()).getId()));
+            //v.setOnClickListener(this);
+            v.setOnClickListener(clic ->{
+                callBackActivity.onButtonClicked(model_ratatouille,getAdapterPosition());
+            });
         }
 
         public void display(Recipe recipe){
@@ -93,27 +103,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
             // Informe le model de la recette selectionné
             //model_ratatouille.recipeClick(recipeList.get(position).getId());
-
-
-
-            // TODO : never null, why?
-            FrameLayout frameLayout = view.findViewById(R.id.frame_layout_detail);
-
-            if (frameLayout == null){
-                Log.d("info","send value to the DetailActivity =>"+recipeList.get(position).getName());
-                Intent intent = new Intent(context, RecipeDetailsActivity.class);
-                //intent.putExtra(String.valueOf(Model_Ratatouille.class), model_ratatouille);
-                context.startActivity(intent);
-            }/*
-            else {
-                Log.d("info","send value to the fragment =>"+recipeList.get(position).getName());
-                RecipeDetailsFragment detailFragment = new RecipeDetailsFragment();
-                Bundle args = new Bundle();
-                args.putSerializable(String.valueOf(Recipe.class), recipeList.get(position));
-                detailFragment.setArguments(args);
-                FragmentTransaction fragmentTransaction = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, detailFragment);
-                fragmentTransaction.commit();
-            }*/
         }
 
         @Override
