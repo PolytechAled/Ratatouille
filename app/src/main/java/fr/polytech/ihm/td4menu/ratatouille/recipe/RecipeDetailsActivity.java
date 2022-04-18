@@ -38,7 +38,8 @@ public class RecipeDetailsActivity extends AppCompatActivity{
         if (recipeDetailsFragment == null) {
             recipeDetailsFragment = new RecipeDetailsFragment();
             Bundle args = new Bundle();
-            args.putParcelable(String.valueOf(Recipe.class), (Parcelable) recipe);
+            args.putSerializable("Recipe", recipe);
+            args.putInt("id", recipe.getId());
             recipeDetailsFragment.setArguments(args);
             fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);
             fragmentTransaction.commit();

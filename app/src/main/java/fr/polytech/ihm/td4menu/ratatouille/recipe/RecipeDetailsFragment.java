@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
@@ -24,9 +26,12 @@ public class RecipeDetailsFragment extends Fragment {
 
         TextView recipeName= result.findViewById(R.id.recipeDetailName);
         Bundle arguments = getArguments();
+        //int valeur = getArguments().getInt("id");
+
         if(arguments != null){
-            Recipe recipe = (Recipe) arguments.getParcelable(String.valueOf(Recipe.class));
-            recipeName.setText(recipe.getName());
+            Serializable recipe = getArguments().getSerializable("Recipe");
+            Recipe r = (Recipe) recipe;
+            recipeName.setText(r.getName());
         }
 
         return result;
