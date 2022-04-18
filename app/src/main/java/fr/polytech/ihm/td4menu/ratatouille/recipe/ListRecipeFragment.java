@@ -15,6 +15,7 @@ import fr.polytech.ihm.td4menu.ratatouille.MVC.View_ListRecipe;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 public class ListRecipeFragment extends Fragment {
@@ -63,7 +64,7 @@ public class ListRecipeFragment extends Fragment {
             Recipes.add(recipe);
 
             try {
-                recipe = Recipe.instantiate(DataSource.SPOONACULAR, 716429);
+                recipe = RecipeFactory.instantiate(DataSource.SPOONACULAR, 716429);
 
                 Recipes.add(recipe);
             } catch (Exception e) {
