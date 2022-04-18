@@ -20,6 +20,9 @@ import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 
 public class ListRecipeActivity extends AppCompatActivity implements OnButtonClickedListener {
+    private RecipeDetailsFragment recipeDetailsFragment;
+    private FragmentTransaction fragmentTransaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -27,9 +30,9 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
 
         //display detailFragment if exists
         if (findViewById(R.id.frame_layout_detail) != null) {
-            RecipeDetailsFragment recipeDetailsFragment = new RecipeDetailsFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);
-            fragmentTransaction.commit();
+            this.recipeDetailsFragment = new RecipeDetailsFragment();
+            this.fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);
+            this.fragmentTransaction.commit();
         }
 
     }
@@ -50,10 +53,10 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
         }
         else {
             Log.d("info","send value to the fragment =>"+recipeList.get(position).getName());
-            RecipeDetailsFragment detailFragment = new RecipeDetailsFragment();
-            FragmentTransaction fragmentTransaction = ((FragmentActivity)this).getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, detailFragment);
+            //this.recipeDetailsFragment = new RecipeDetailsFragment();
+            this.fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);
             fragmentTransaction.commit();
             model_ratatouille.recipeClick(recipeList.get(position).getId(), findViewById(R.id.frame_layout_detail));
-        }
+       }
     }
 }

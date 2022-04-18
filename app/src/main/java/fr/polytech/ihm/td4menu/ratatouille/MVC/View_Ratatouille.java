@@ -77,11 +77,9 @@ public class View_Ratatouille implements Observer{
 
             case VIEW_DETAILSRECIPE:
                 Recipe recipe = model.getRecipeShow();
-                ViewGroup viewGroup = model.getLayout();
                 TextView textView = model.getLayout().findViewById(R.id.recipeDetailName);
                 textView.setText(recipe.getName());
                 Log.d("info","Update View detailsRecipe");
-
                 break;
         }
 
