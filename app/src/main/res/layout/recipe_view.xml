@@ -14,27 +14,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
+        android:drawablePadding="@dimen/margin"
         android:text="@string/recipe_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_baseline_clock_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cookingTimeIcon"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/cookingTimeIcon"
-        android:layout_width="16dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/margin"
-        app:layout_constraintBottom_toBottomOf="@+id/recipeName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recipeName"
-        app:srcCompat="@drawable/ic_baseline_clock_24" />
 
     <LinearLayout
         android:id="@+id/iconsList"
@@ -69,7 +59,7 @@
     <ImageView
         android:id="@+id/flagIcon"
         android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginEnd="@dimen/margin"
         android:layout_weight="1"
