@@ -2,11 +2,9 @@ package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,45 +30,16 @@ public class ListRecipeFragment extends Fragment {
 
 /*
         new Thread(() -> {
-            Recipe recipe = new Recipe(0, "Recette1");
-            recipe.setOrigin("France");
-            recipe.setCookingTime(75);
-            Recipes.add(recipe);
-
-            recipe = new Recipe(1, "Recette2");
-            recipe.setOrigin("France");
-            recipe.setCookingTime(15);
-            Recipes.add(recipe);
-
-            recipe = new Recipe(2, "Recette3");
-            recipe.setOrigin("Belgique");
-            recipe.setCookingTime(56);
-            Recipes.add(recipe);
-
-            recipe = new Recipe(3, "Recette4");
-            recipe.setOrigin("Chine");
-            recipe.setCookingTime(45);
-            Recipes.add(recipe);
-
-            recipe = new Recipe(4, "Recette5");
-            recipe.setOrigin("Ecosse");
-            recipe.setCookingTime(45);
-            Recipes.add(recipe);
-
-            recipe = new Recipe(5, "Recette6");
-            recipe.setOrigin("Espagne");
-            recipe.setCookingTime(15);
-            Recipes.add(recipe);
-
-            recipe = new Recipe(6, "Recette7");
-            recipe.setOrigin("France");
-            recipe.setCookingTime(10);
-            Recipes.add(recipe);
+            Recipes.add(new CustomRecipeFactory("Recette1", "France", 75).instantiate());
+            Recipes.add(new CustomRecipeFactory("Recette2", "France", 15).instantiate());
+            Recipes.add(new CustomRecipeFactory("Recette3", "Belgique", 56).instantiate());
+            Recipes.add(new CustomRecipeFactory("Recette4", "Chine", 45).instantiate());
+            Recipes.add(new CustomRecipeFactory("Recette5", "Ecosse", 45).instantiate());
+            Recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15).instantiate());
+            Recipes.add(new CustomRecipeFactory("Recette7", "France", 10).instantiate());
 
             try {
-                recipe = RecipeFactory.instantiate(DataSource.SPOONACULAR, 716429);
-
-                Recipes.add(recipe);
+                Recipes.add(new APIRecipeFactory(DataSource.SPOONACULAR, 716429).instantiate());
             } catch (Exception e) {
                 e.printStackTrace();
             }

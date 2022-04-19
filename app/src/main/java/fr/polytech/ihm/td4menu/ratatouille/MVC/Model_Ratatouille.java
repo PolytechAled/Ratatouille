@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Optional;
 
+import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
@@ -40,40 +41,13 @@ public class Model_Ratatouille extends Observable{
     public void build(){
         List<Recipe> recipes = new ArrayList<>();
 
-        Recipe recipe = new Recipe(0, "Recette1");
-        recipe.setOrigin("France");
-        recipe.setCookingTime(75);
-        recipes.add(recipe);
-
-        recipe = new Recipe(1, "Recette2");
-        recipe.setOrigin("France");
-        recipe.setCookingTime(15);
-        recipes.add(recipe);
-
-        recipe = new Recipe(2, "Recette3");
-        recipe.setOrigin("Belgique");
-        recipe.setCookingTime(56);
-        recipes.add(recipe);
-
-        recipe = new Recipe(3, "Recette4");
-        recipe.setOrigin("Chine");
-        recipe.setCookingTime(45);
-        recipes.add(recipe);
-
-        recipe = new Recipe(4, "Recette5");
-        recipe.setOrigin("Ecosse");
-        recipe.setCookingTime(45);
-        recipes.add(recipe);
-
-        recipe = new Recipe(5, "Recette6");
-        recipe.setOrigin("Espagne");
-        recipe.setCookingTime(15);
-        recipes.add(recipe);
-
-        recipe = new Recipe(6, "Recette7");
-        recipe.setOrigin("France");
-        recipe.setCookingTime(10);
-        recipes.add(recipe);
+        recipes.add(new CustomRecipeFactory("Recette1", "France", 75).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette2", "France", 15).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette3", "Belgique", 56).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette4", "Chine", 45).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette5", "Ecosse", 45).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette7", "France", 10).instantiate());
 
         this.recipeList.put(0,new Week(recipes,0));
 
