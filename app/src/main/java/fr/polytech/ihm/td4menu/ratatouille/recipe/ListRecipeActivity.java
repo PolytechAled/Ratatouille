@@ -38,7 +38,7 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
 
     @Override
     public void onButtonClicked(Model_Ratatouille model_ratatouille, int position){
-        List<Recipe> recipeList = model_ratatouille.getRecipeList(model_ratatouille.getWeekNumber()).getRecipeList();
+        List<Recipe> recipeList = model_ratatouille.getWeek(model_ratatouille.getWeekNumber()).getDay(0).getAll();
         Toast.makeText(this,"Vous voulez voir la Recette : " + recipeList.get(position).getName() , Toast.LENGTH_SHORT).show();
 
         FrameLayout frameLayout = findViewById(R.id.frame_layout_detail);

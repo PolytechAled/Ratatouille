@@ -3,45 +3,23 @@ package fr.polytech.ihm.td4menu.ratatouille.datas;
 import java.util.List;
 
 public class Week {
-    List<Recipe> recipeList;
+    List<Day> days;
     int weekNumber;
 
-    public Week(List<Recipe> recipeList,int weekNumber) {
-        this.recipeList = recipeList;
+    public Week(List<Day> days ,int weekNumber) {
+        this.days = days;
         this.weekNumber = weekNumber;
     }
 
-    public void addRecipe(Recipe recipe){
-        recipeList.add(recipe);
+    public int getWeekNumber() {
+        return weekNumber;
     }
 
-    public void removeRecipe(int id){
-        for(int i = 0; i < this.recipeList.size(); i++) {
-            if(this.recipeList.get(i).getId() == id) {
-                recipeList.remove(i);
-                break;
-            }
-        }
+    public List<Day> getDays() {
+        return days;
     }
 
-    public List<Recipe> getRecipeList() {
-        return recipeList;
-    }
-
-    public Recipe getRecipeId(int id){
-        for(int i = 0; i < this.recipeList.size(); i++){
-            if(this.recipeList.get(i).getId() == id){
-                return this.recipeList.get(i);
-            }
-        }
-        return null;
-    }
-
-    public Recipe getRecipePosition(int position){
-        return this.recipeList.get(position);
-    }
-
-    public void setRecipeList(List<Recipe> recipeList) {
-        this.recipeList = recipeList;
+    public Day getDay(int i) {
+        return this.days.get(i);
     }
 }
