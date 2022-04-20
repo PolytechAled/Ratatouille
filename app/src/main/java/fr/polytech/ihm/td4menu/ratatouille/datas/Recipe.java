@@ -44,6 +44,10 @@ public class Recipe implements Serializable{
      * Step list.
      */
     protected List<String> steps;
+    /**
+     * Ingredient list.
+     */
+    protected List<String> ingredients;
 
     /**
      * Recipe category.
@@ -87,6 +91,10 @@ public class Recipe implements Serializable{
 
     public void setCategoryList(List<RecipeCategory> categoryList) {
         this.categoryList = categoryList;
+    }
+
+    public void setIngredients(List<String> ingredients){
+        this.ingredients = ingredients;
     }
 
     public int getCookingTime() {
@@ -140,6 +148,7 @@ public class Recipe implements Serializable{
                 ", imageUrl='" + imageUrl + '\'' +
                 ", steps=" + steps +
                 ", categoryList=" + categoryList +
+                ", ingredient=" + ingredients +
                 '}';
     }
 }
