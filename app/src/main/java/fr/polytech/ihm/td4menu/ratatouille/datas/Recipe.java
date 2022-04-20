@@ -93,6 +93,10 @@ public class Recipe implements Serializable{
         this.categoryList = categoryList;
     }
 
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
     public void setIngredients(List<String> ingredients){
         this.ingredients = ingredients;
     }
