@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
-
+        <activity
+            android:name=".recipe.custom.CreateCustomRecipe"
+            android:exported="false" />
         <activity
             android:name=".recipe.RecipeDetailsActivity"
             android:exported="false" />
@@ -29,7 +31,6 @@
         <activity
             android:name=".Home"
             android:exported="false" />
-
         <activity
             android:name=".CreationTimeActivity"
             android:exported="false" />
@@ -67,4 +68,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

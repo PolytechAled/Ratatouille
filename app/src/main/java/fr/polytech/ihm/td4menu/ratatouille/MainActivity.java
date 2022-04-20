@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.custom.CreateCustomRecipe;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,8 +52,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, ListRecipeActivity.class);
+        Intent intent = new Intent(this, CreateCustomRecipe.class);
         startActivity(intent);
+
+        //intent = new Intent(this, ListRecipeActivity.class);
+        //startActivity(intent);
 
         Date d = new Date();
         SimpleDateFormat f = new SimpleDateFormat("HH");

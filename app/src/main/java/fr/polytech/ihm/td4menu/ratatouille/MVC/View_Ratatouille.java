@@ -82,7 +82,5 @@ public class View_Ratatouille implements Observer{
                 Log.d("info","Update View detailsRecipe");
                 break;
         }
-
-
     }
 }
