@@ -10,10 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
+import fr.polytech.ihm.td4menu.ratatouille.repository.CalendarRepository;
 
 public class RecipeDetailsFragment extends Fragment {
     private Model_Ratatouille model_ratatouille;
@@ -33,7 +36,14 @@ public class RecipeDetailsFragment extends Fragment {
             Serializable recipe = getArguments().getSerializable("Recipe");
             Recipe r = (Recipe) recipe;
             recipeName.setText(r.getName());
+
+
+            result.findViewById(R.id.calendar_btn).setOnClickListener((e) -> {
+                CalendarRepository repository = new CalendarRepository();
+                repository.registerEvent(this.getActivity(), Recipes.get(r.getId()), Calendar.getInstance());
+            });
         }
+
         return result;
     }
 }

@@ -47,7 +47,14 @@
             android:id="@+id/recipeDetailTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Temps de préparation" />
+            android:text="Temps de préparation     " />
+
+        <Button
+            android:id="@+id/calendar_btn"
+            android:layout_width="108dp"
+            android:layout_height="match_parent"
+            android:text="Programmer"
+            android:textSize="8sp" />
     </LinearLayout>
 
     <ImageView
@@ -96,7 +103,9 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" >
+
+    </ListView>
 
     <TextView
         android:id="@+id/ingredients"
