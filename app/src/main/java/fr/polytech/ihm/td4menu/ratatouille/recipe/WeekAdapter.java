@@ -57,7 +57,7 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
             this.recyclerView.setAdapter(dayAdapter);
 
             v.setOnClickListener(clic ->{
-                callBackActivity.onButtonClicked(model_ratatouille,getAbsoluteAdapterPosition());
+                model_ratatouille.dayClick(getAbsoluteAdapterPosition());
             });
         }
 

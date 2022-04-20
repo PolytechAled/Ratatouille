@@ -1,5 +1,6 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
+import android.content.Intent;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -10,11 +11,14 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Optional;
 
+import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeCategory;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
 public class Model_Ratatouille extends Observable{
     private Map<Integer, Week> recipeList;
@@ -77,12 +81,6 @@ public class Model_Ratatouille extends Observable{
         return recipeList.size();
     }
 
-    public void addWeek(int weekNumber,Week week){
-        recipeList.put(weekNumber,week);
-        setChanged();
-        notifyObservers();
-    }
-
     private int getMaxKeyList(){
         return this.recipeList.keySet().stream().max(Integer::compare).get();
     }
@@ -106,12 +104,19 @@ public class Model_Ratatouille extends Observable{
     }
 
     public void recipeClick(int recipeID, ViewGroup layout) {
-        Week week = recipeList.get(weekNumber);
-        this.recipeShow = week.getDay(0).get(recipeID);
+        this.recipeShow = Recipes.get(recipeID);
         this.updateType = VIEW_TYPE.VIEW_DETAILSRECIPE;
         this.layout = layout;
         setChanged();
         notifyObservers();
+    }
+
+    public void dayClick(int dayId) {
+        Day day = getWeek(getWeekNumber()).getDay(dayId);
+
+        Intent intent = new Intent(getLayout().getContext(), ListRecipeActivity.class);
+        //TODO
+        //startActivity(intent);
     }
 
     public ViewGroup getLayout() {

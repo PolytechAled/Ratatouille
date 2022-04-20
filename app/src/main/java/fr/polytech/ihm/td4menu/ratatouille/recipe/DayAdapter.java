@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
@@ -58,7 +56,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder>{
 
         @Override
         public void onClick(View view){
-            int position = getLayoutPosition(); 
+            int position = getLayoutPosition();
             Log.d("info", position + "");
         }
 
