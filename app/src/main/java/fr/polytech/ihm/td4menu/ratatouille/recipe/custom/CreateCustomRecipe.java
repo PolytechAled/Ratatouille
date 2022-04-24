@@ -1,9 +1,5 @@
 package fr.polytech.ihm.td4menu.ratatouille.recipe.custom;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -11,17 +7,15 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.File;
 
-import fr.polytech.ihm.td4menu.ratatouille.MVC.Controller_Ratatouille;
-import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
-import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.custom.MVC.Controller_CustomRecipe;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.custom.MVC.Model_CustomRecipe;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.custom.MVC.View_CustomRecipe;
@@ -65,7 +59,7 @@ public class CreateCustomRecipe extends AppCompatActivity {
         findViewById(R.id.customRecipeButtonValider).setOnClickListener(clic -> {
             Log.d("info","Recipe custom create");
             String name = model_customRecipe.getName();
-            CustomRecipeFactory customRecipeFactory = new CustomRecipeFactory(name,"custom",0);
+            //CustomRecipeFactory customRecipeFactory = new CustomRecipeFactory(name,"custom",0, new ArrayList<>(), new ArrayList<>());
         });
     }
     /**
@@ -113,6 +107,7 @@ public class CreateCustomRecipe extends AppCompatActivity {
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String result[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, result, grantResults);
         Log.d(TAG,"onRequestPermissionsResult : requestCode="+requestCode+"    grantResults.length="+grantResults.length);
         switch (requestCode) {
             case PermissionFactory.PERMISSIONS_REQUEST_READ_MEDIA:
