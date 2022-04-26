@@ -1,11 +1,8 @@
-package fr.polytech.ihm.td4menu.ratatouille.recipe.custom.MVC;
+package fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC;
 
 import android.graphics.Bitmap;
 
-import java.util.HashMap;
 import java.util.Observable;
-
-import fr.polytech.ihm.td4menu.ratatouille.MVC.Controller_Ratatouille;
 
 public class Model_CustomRecipe extends Observable {
     private Controller_CustomRecipe controller_customRecipe;

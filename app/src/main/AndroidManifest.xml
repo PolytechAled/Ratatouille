@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity
-            android:name=".recipe.custom.CreateCustomRecipe"
+            android:name=".recipe.create.MenuOfRecipeCreation"
+            android:exported="false" />
+        <activity
+            android:name=".recipe.create.custom.CreateCustomRecipe"
             android:exported="false" />
         <activity
             android:name=".recipe.RecipeDetailsActivity"

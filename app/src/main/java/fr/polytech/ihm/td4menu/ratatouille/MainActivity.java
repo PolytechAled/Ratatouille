@@ -16,8 +16,7 @@ import androidx.core.app.NotificationManagerCompat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.custom.CreateCustomRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, CreateCustomRecipe.class);
+        Intent intent = new Intent(this, MenuOfRecipeCreation.class);
         startActivity(intent);
 
         //intent = new Intent(this, ListRecipeActivity.class);

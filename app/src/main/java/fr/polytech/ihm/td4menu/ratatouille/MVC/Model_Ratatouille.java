@@ -12,7 +12,6 @@ import java.util.Optional;
 import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
 public class Model_Ratatouille extends Observable{
     private Map<Integer, Week> recipeList;

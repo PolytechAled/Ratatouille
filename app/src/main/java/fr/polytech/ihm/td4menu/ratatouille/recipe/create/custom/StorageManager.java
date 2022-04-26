@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.recipe.custom;
+package fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom;
 
 import android.content.Context;
 import android.graphics.Bitmap;

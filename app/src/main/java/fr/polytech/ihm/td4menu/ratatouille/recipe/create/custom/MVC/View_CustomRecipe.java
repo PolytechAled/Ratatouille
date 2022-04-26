@@ -1,8 +1,7 @@
-package fr.polytech.ihm.td4menu.ratatouille.recipe.custom.MVC;
+package fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC;
 
 import android.graphics.Bitmap;
 import android.util.Log;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,7 +9,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.custom.CreateCustomRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.CreateCustomRecipe;
 
 public class View_CustomRecipe implements Observer {
     private Controller_CustomRecipe controller_customRecipe;
