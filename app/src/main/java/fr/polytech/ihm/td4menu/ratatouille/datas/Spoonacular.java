@@ -19,6 +19,12 @@ public class Spoonacular extends RecipeApi {
     private static final String JSON_TITLE = "title";
     private static final String JSON_COOKING_TIME = "readyInMinutes";
     private static final String JSON_RESULTS = "results";
+    private static final String JSON_INGREDIENTS = "extendedIngredients";
+    private static final String JSON_INGREDIENT_NAME = "name";
+    private static final String JSON_INGREDIENT_MEASURES = "measures";
+    private static final String JSON_INGREDIENT_MEASURE_METRIC = "metric";
+    private static final String JSON_INGREDIENT_MEASURE_AMOUNT = "amount";
+    private static final String JSON_INGREDIENT_MEASURE_UNIT_SHORT = "unitShort";
 
     private static final String RECIPE_API_URL = "https://api.spoonacular.com/recipes/%d/information?apiKey=%s&includeNutrition=false";
     private static final String SEARCH_RECIPE_API_URL = "https://api.spoonacular.com/recipes/complexSearch?query=%s&number=2&apiKey=%s";
@@ -41,6 +47,23 @@ public class Spoonacular extends RecipeApi {
             }
 
             recipe.setOrigin("France");
+
+            List<String> ingredientList = new ArrayList<>();
+
+            if (json.has(JSON_INGREDIENTS)){
+                JSONArray ingredients = json.getJSONArray(JSON_INGREDIENTS);
+                Log.d("Ratatouille", "Recipe has " + ingredients.length() + " ingredients.");
+
+                for (int i = 0; i < ingredients.length(); ++i){
+                    JSONObject ingredient = ingredients.getJSONObject(i);
+                    JSONObject measureMetric = ingredient.getJSONObject(JSON_INGREDIENT_MEASURES).getJSONObject(JSON_INGREDIENT_MEASURE_METRIC);
+                    ingredientList.add(ingredient.getString(JSON_INGREDIENT_NAME) + " " + measureMetric.getDouble(JSON_INGREDIENT_MEASURE_AMOUNT) + measureMetric.getString(JSON_INGREDIENT_MEASURE_UNIT_SHORT));
+                }
+            }
+
+            Log.d("Ratatouille", ingredientList.toString());
+
+            recipe.setIngredients(ingredientList);
             recipe.setCookingTime(json.getInt(JSON_COOKING_TIME));
 
             recipe.setPopulated(true);

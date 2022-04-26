@@ -13,6 +13,10 @@ import fr.polytech.ihm.td4menu.ratatouille.MVC.Controller_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.datas.APIRecipeFactory;
+import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
+import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 public class ListRecipeFragment extends Fragment {
     private RecipeAdapter recipeAdapter;
