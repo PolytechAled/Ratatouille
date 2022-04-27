@@ -9,6 +9,7 @@ public class Recipes {
     private static final Recipes instance = new Recipes();
 
     private Map<Integer, Recipe> recipeList;
+    private Day day;
 
     private Recipes() {
         this.recipeList = new HashMap<>();
@@ -35,5 +36,13 @@ public class Recipes {
         for(int i = 0; i < recipes.size(); i++){
             instance.recipeList.put(recipes.get(i).getId(), recipes.get(i));
         }
+    }
+
+    public static Day getDay() {
+        return instance.day;
+    }
+
+    public static void setDay(Day da) {
+        instance.day = da;
     }
 }

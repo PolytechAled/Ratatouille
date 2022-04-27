@@ -112,7 +112,7 @@ public class Model_Ratatouille extends Observable{
     }
 
     public void dayClick(int dayId) {
-        
+        Recipes.setDay(recipeList.get(weekNumber).getDay(dayId));
     }
 
     public ViewGroup getLayout() {
