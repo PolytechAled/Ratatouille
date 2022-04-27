@@ -13,6 +13,7 @@ import java.util.Observer;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.OnButtonClickedListener;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.WeekAdapter;
 
@@ -66,7 +67,7 @@ public class View_Ratatouille implements Observer{
                 break;
 
             case VIEW_DETAILSRECIPE:
-                Recipe recipe = model.getRecipeShow();
+                Recipe recipe = Recipes.get(model.getRecipeShow());
                 TextView textView = model.getLayout().findViewById(R.id.recipeDetailName);
                 textView.setText(recipe.getName());
                 Log.d("info","Update View detailsRecipe");

@@ -22,7 +22,7 @@ import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
 public class Model_Ratatouille extends Observable{
     private Map<Integer, Week> recipeList;
-    private Recipe recipeShow;
+    private int recipeShow;
     private int weekNumber;
     private Controller_Ratatouille controller_Ratatouille;
     private VIEW_TYPE updateType;
@@ -41,7 +41,7 @@ public class Model_Ratatouille extends Observable{
         super();
         this.recipeList = new HashMap<>();
         this.controller_Ratatouille = controller_Ratatouille;
-        this.recipeShow = null;
+        this.recipeShow = 0;
     }
 
     public void build(){
@@ -104,7 +104,7 @@ public class Model_Ratatouille extends Observable{
     }
 
     public void recipeClick(int recipeID, ViewGroup layout) {
-        this.recipeShow = Recipes.get(recipeID);
+        this.recipeShow = recipeID;
         this.updateType = VIEW_TYPE.VIEW_DETAILSRECIPE;
         this.layout = layout;
         setChanged();
@@ -119,7 +119,7 @@ public class Model_Ratatouille extends Observable{
         return layout;
     }
 
-    public Recipe getRecipeShow() {
+    public int getRecipeShow() {
         return recipeShow;
     }
 
