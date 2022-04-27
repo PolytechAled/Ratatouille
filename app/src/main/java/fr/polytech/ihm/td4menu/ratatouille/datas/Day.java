@@ -56,4 +56,12 @@ public class Day {
     public List<Recipe> getAll() {
         return Arrays.asList(firstRecipe, secondRecipe);
     }
+
+    public void setFirstRecipe(Recipe firstRecipe) {
+        this.firstRecipe = firstRecipe;
+    }
+
+    public void setSecondRecipe(Recipe secondRecipe) {
+        this.secondRecipe = secondRecipe;
+    }
 }
