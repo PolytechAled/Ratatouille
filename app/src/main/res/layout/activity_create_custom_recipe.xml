@@ -49,41 +49,34 @@
             app:srcCompat="@drawable/img" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="355dp"
-        android:layout_height="113dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="93dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/customRecipeButtonRetour"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal">
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="Retour" />
 
-            <Button
-                android:id="@+id/customRecipeButtonRetour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:text="Retour" />
+        <Button
+            android:id="@+id/customRecipeButtonValider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="Valider" />
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/customRecipeButtonValider"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:text="Valider" />
-        </LinearLayout>
-    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
