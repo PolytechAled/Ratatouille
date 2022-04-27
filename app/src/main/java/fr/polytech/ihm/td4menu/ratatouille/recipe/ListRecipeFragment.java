@@ -19,7 +19,7 @@ import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 public class ListRecipeFragment extends Fragment {
-    private RecipeAdapter recipeAdapter;
+    private WeekAdapter weekAdapter;
     private RecyclerView recyclerView;
     private OnButtonClickedListener callBackActivity;
     //private Model_Ratatouille model;
@@ -31,24 +31,6 @@ public class ListRecipeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_list_recipe, null);
-
-/*
-        new Thread(() -> {
-            Recipes.add(new CustomRecipeFactory("Recette1", "France", 75).instantiate());
-            Recipes.add(new CustomRecipeFactory("Recette2", "France", 15).instantiate());
-            Recipes.add(new CustomRecipeFactory("Recette3", "Belgique", 56).instantiate());
-            Recipes.add(new CustomRecipeFactory("Recette4", "Chine", 45).instantiate());
-            Recipes.add(new CustomRecipeFactory("Recette5", "Ecosse", 45).instantiate());
-            Recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15).instantiate());
-            Recipes.add(new CustomRecipeFactory("Recette7", "France", 10).instantiate());
-
-            try {
-                Recipes.add(new APIRecipeFactory(DataSource.SPOONACULAR, 716429).instantiate());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }).start();
-*/
 
         //create VIEW with XML layout
         View_Ratatouille view = new View_Ratatouille( getActivity().getApplicationContext(), (ViewGroup) result, callBackActivity);

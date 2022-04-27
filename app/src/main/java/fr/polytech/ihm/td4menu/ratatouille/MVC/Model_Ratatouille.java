@@ -1,5 +1,6 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
+import android.content.Intent;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -10,10 +11,14 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Optional;
 
+import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeCategory;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
 public class Model_Ratatouille extends Observable{
     private Map<Integer, Week> recipeList;
@@ -60,7 +65,7 @@ public class Model_Ratatouille extends Observable{
         recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15, categoryList,ingredients).instantiate());
         recipes.add(new CustomRecipeFactory("Recette7", "France", 10, categoryList,ingredients).instantiate());
 
-        this.recipeList.put(0,new Week(recipes,0));
+        this.recipeList.put(0,new Week(Arrays.asList(new Day(0, recipes.get(0), recipes.get(1)), new Day(1, recipes.get(0), recipes.get(1))),0));
 
         this.updateType = VIEW_TYPE.VIEW_LISTRECIPE;
 
@@ -68,32 +73,12 @@ public class Model_Ratatouille extends Observable{
         notifyObservers();
     }
 
-    public Week getRecipeList(int weekNumber) {
+    public Week getWeek(int weekNumber) {
         return recipeList.get(weekNumber);
-    }
-
-    public Optional<Recipe> getRecipe(int id, int weekNumber){
-        Optional<Recipe> recipe = null;
-        Week week = getRecipeList(weekNumber);
-        return week.getRecipeList().stream().filter(recipe1 -> recipe1.getId() == id).findFirst();
     }
 
     public int size() {
         return recipeList.size();
-    }
-
-    public void addRecipe(int weekNumber, Recipe recipe) {
-        Week week = recipeList.get(weekNumber);
-        week.addRecipe(recipe);
-        recipeList.put(weekNumber,week);
-        setChanged();
-        notifyObservers();
-    }
-
-    public void addWeek(int weekNumber,Week week){
-        recipeList.put(weekNumber,week);
-        setChanged();
-        notifyObservers();
     }
 
     private int getMaxKeyList(){
@@ -111,20 +96,23 @@ public class Model_Ratatouille extends Observable{
     public void deleteRecipe(int weekNumber, int id) {
         if (weekNumber < this.getMaxKeyList()) {
             Week week = recipeList.get(weekNumber);
-            week.removeRecipe(id);
-            recipeList.put(weekNumber,week);
+            //week.removeRecipe(id);
+            //recipeList.put(weekNumber,week);
             setChanged();
             notifyObservers();
         }
     }
 
     public void recipeClick(int recipeID, ViewGroup layout) {
-        Week week = recipeList.get(weekNumber);
-        this.recipeShow = week.getRecipeId(recipeID);
+        this.recipeShow = Recipes.get(recipeID);
         this.updateType = VIEW_TYPE.VIEW_DETAILSRECIPE;
         this.layout = layout;
         setChanged();
         notifyObservers();
+    }
+
+    public void dayClick(int dayId) {
+        
     }
 
     public ViewGroup getLayout() {
@@ -141,12 +129,6 @@ public class Model_Ratatouille extends Observable{
 
     public int getWeekNumber() {
         return weekNumber;
-    }
-
-    public Recipe getRecipePosition(int adapterPosition) {
-        Week week = this.recipeList.get(this.weekNumber);
-        Recipe recipe = week.getRecipePosition(adapterPosition);
-        return recipe;
     }
 
     public VIEW_TYPE getUpdateType() {
