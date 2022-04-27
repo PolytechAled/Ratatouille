@@ -24,6 +24,10 @@ public class ListRecipeFragment extends Fragment {
     private OnButtonClickedListener callBackActivity;
     //private Model_Ratatouille model;
 
+    View_Ratatouille view;
+    Model_Ratatouille model;
+    Controller_Ratatouille controller;
+
     public ListRecipeFragment(){
         //this.model = model;
     }
@@ -33,14 +37,14 @@ public class ListRecipeFragment extends Fragment {
         View result = inflater.inflate(R.layout.fragment_list_recipe, null);
 
         //create VIEW with XML layout
-        View_Ratatouille view = new View_Ratatouille( getActivity().getApplicationContext(), (ViewGroup) result, callBackActivity);
-        Model_Ratatouille model = new Model_Ratatouille(null);    //controller not still created so the controller reference will be sent later
+        view = new View_Ratatouille( getActivity().getApplicationContext(), (ViewGroup) result, callBackActivity);
+        model = new Model_Ratatouille(null);    //controller not still created so the controller reference will be sent later
         model.addObserver(view);    //MODEL is observable from VIEW
 
         // TODO : Just for exemple
         model.build();
 
-        Controller_Ratatouille controller = new Controller_Ratatouille( model,view );
+        controller = new Controller_Ratatouille( model,view );
         model.setController(controller);
         view.setListener( controller );
 
@@ -54,6 +58,11 @@ public class ListRecipeFragment extends Fragment {
         createCallbackToParentActivity();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        view.test();
+    }
 
     // Create callback to parent activity
     private void createCallbackToParentActivity(){

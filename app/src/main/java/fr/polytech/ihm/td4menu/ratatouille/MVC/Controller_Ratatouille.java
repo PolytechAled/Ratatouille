@@ -68,4 +68,8 @@ public class Controller_Ratatouille implements IViewClick {
             model_ratatouille.recipeClick(recipeID,null);
         }
     }
+
+    public void test() {
+        model_ratatouille.test();
+    }
 }

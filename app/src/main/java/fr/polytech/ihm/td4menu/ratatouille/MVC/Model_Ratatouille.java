@@ -28,6 +28,11 @@ public class Model_Ratatouille extends Observable{
     private VIEW_TYPE updateType;
     private ViewGroup layout;
 
+    public void test() {
+        setChanged();
+        notifyObservers();
+    }
+
     public enum VIEW_TYPE{
         VIEW_LISTRECIPE,
         VIEW_DETAILSRECIPE;

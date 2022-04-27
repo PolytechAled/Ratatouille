@@ -9,10 +9,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC.Controller_CustomRecipe;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC.Model_CustomRecipe;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC.View_CustomRecipe;
@@ -60,6 +64,9 @@ public class CreateCustomRecipe extends AppCompatActivity {
         });
 
         findViewById(R.id.customRecipeButtonValider).setOnClickListener(clic -> {
+            EditText textView = findViewById(R.id.customRecipeName);
+            Recipe newRecipe = new Recipe(55, textView.getText().toString());
+            Recipes.getDay().setFirstRecipe(newRecipe);
             finish();
         });
     }

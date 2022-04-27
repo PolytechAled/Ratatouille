@@ -43,7 +43,13 @@ public class View_Ratatouille implements Observer{
     public void onClickItem(int recipeID){
         this.controller_ratatouille.onClickItem(recipeID);
     }
-
+/*
+    public void onClickValidCustomRecipe(Recipe recipe){
+        if(recipe != null){
+            this.controller_ratatouille.
+        }
+    }
+*/
     @Override
     public void update(Observable observable, Object o) {
         Model_Ratatouille model = (Model_Ratatouille) observable;
@@ -73,5 +79,9 @@ public class View_Ratatouille implements Observer{
                 Log.d("info","Update View detailsRecipe");
                 break;
         }
+    }
+
+    public void test() {
+        this.controller_ratatouille.test();
     }
 }
