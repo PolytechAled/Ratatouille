@@ -112,11 +112,7 @@ public class Model_Ratatouille extends Observable{
     }
 
     public void dayClick(int dayId) {
-        Day day = getWeek(getWeekNumber()).getDay(dayId);
-
-        Intent intent = new Intent(getLayout().getContext(), ListRecipeActivity.class);
-        //TODO
-        //startActivity(intent);
+        
     }
 
     public ViewGroup getLayout() {

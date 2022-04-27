@@ -18,6 +18,7 @@ import java.util.List;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
 
 public class ListRecipeActivity extends AppCompatActivity implements OnButtonClickedListener {
     private RecipeDetailsFragment recipeDetailsFragment;
@@ -58,5 +59,11 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
             fragmentTransaction.commit();
             model_ratatouille.recipeClick(recipeList.get(position).getId(), findViewById(R.id.frame_layout_detail));
        }
+    }
+
+    @Override
+    public void onButtonClicked2(Model_Ratatouille model_ratatouille, int position) {
+        Intent intent = new Intent(this, MenuOfRecipeCreation.class);
+        startActivity(intent);
     }
 }
