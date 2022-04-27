@@ -45,9 +45,8 @@ public class ListRecipeFragment extends Fragment {
         model.build();
 
         controller = new Controller_Ratatouille( model,view );
-        model.setController(controller);
+        model.setController( controller );
         view.setListener( controller );
-
 
         return result;
     }

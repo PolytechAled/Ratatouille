@@ -6,68 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".recipe.create.MenuOfRecipeCreation">
 
-    <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="243dp"
-        android:layout_marginBottom="242dp"
-        android:orientation="vertical"
+    <fragment
+        android:id="@+id/menuOfRecipeCreation1"
+        android:name="fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreationFragment"
+        android:layout_width="284dp"
+        android:layout_height="174dp"
+        android:layout_marginBottom="88dp"
+        app:layout_constraintBottom_toTopOf="@+id/menuOfRecipeCreation2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></fragment>
+
+    <fragment
+        android:id="@+id/menuOfRecipeCreation2"
+        android:name="fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreationFragment"
+        android:layout_width="284dp"
+        android:layout_height="174dp"
+        android:layout_marginBottom="152dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"
-            android:text="Nouvelle recette." />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Que faire?" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonMenuRecipeRecherche"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Recherche" />
-
-            <Button
-                android:id="@+id/buttonMenuRecipeGenerer"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Générer" />
-
-            <Button
-                android:id="@+id/buttonMenuRecipeCreer"
-                android:textSize="10dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Créer" />
-        </LinearLayout>
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"></fragment>
 </androidx.constraintlayout.widget.ConstraintLayout>

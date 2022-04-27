@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity
+            android:name=".Intro"
+            android:exported="false" />
+        <activity
             android:name=".recipe.create.MenuOfRecipeCreation"
             android:exported="false" />
         <activity

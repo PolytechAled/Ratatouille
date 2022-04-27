@@ -51,8 +51,7 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
             intent.putExtra(String.valueOf(Recipe.class), recipe);
             //model_ratatouille.recipeClick(recipeList.get(position).getId(), findViewById(R.id.frame_layout_detail));
             startActivity(intent);
-        }
-        else {
+        } else {
             Log.d("info","send value to the fragment =>"+recipeList.get(position).getName());
             //this.recipeDetailsFragment = new RecipeDetailsFragment();
             this.fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);

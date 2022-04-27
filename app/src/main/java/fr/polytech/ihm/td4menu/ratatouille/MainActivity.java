@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 .setContentIntent(pintent)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setStyle(new NotificationCompat.BigPictureStyle()
-                    .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.img))
-                    .bigLargeIcon(null))
+                        .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.img))
+                        .bigLargeIcon(null))
                 .setAutoCancel(true);
 
         NotificationManagerCompat.from(this).notify( notificationId, notification.build() );
@@ -52,11 +52,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, ListRecipeActivity.class);
+        Intent intent = new Intent(this, Intro.class);
         startActivity(intent);
 
-        //intent = new Intent(this, ListRecipeActivity.class);
-        //startActivity(intent);
+
 
         Date d = new Date();
         SimpleDateFormat f = new SimpleDateFormat("HH");
@@ -65,5 +64,6 @@ public class MainActivity extends AppCompatActivity {
         printheure.setText(s);
 
         if(Integer.parseInt(s) == 16 || Integer.parseInt(s) == 11) sendNotificationOnChannel("Au fourneau !", "C'est de préparer le plat: {}", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
+
     }
 }
