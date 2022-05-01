@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,23 +7,66 @@
     android:layout_height="match_parent"
     tools:context=".recipe.create.MenuOfRecipeCreation">
 
-    <fragment
+    <FrameLayout
         android:id="@+id/menuOfRecipeCreation1"
-        android:name="fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreationFragment"
-        android:layout_width="284dp"
-        android:layout_height="174dp"
-        android:layout_marginBottom="88dp"
+        android:layout_width="337dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="332dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Nouvelle recette"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:layout_height="22dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Midi"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/menuOfRecipeCreation1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Soir"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/menuOfRecipeCreation2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></fragment>
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <fragment
+    <FrameLayout
         android:id="@+id/menuOfRecipeCreation2"
-        android:name="fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreationFragment"
-        android:layout_width="284dp"
-        android:layout_height="174dp"
-        android:layout_marginBottom="152dp"
+        android:layout_width="337dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></fragment>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

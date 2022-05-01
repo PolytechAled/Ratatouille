@@ -10,10 +10,15 @@ import android.view.ViewGroup;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
 
-public class MenuOfRecipeCreationFragment extends Fragment {
+public class TestFragment extends Fragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_of_recipe_creation, container, false);
+        View view = inflater.inflate(R.layout.fragment_test, container, false);
+
+
+
+        return view;
     }
 }
