@@ -25,9 +25,12 @@ public class Spoonacular extends RecipeApi {
     private static final String JSON_INGREDIENT_MEASURE_METRIC = "metric";
     private static final String JSON_INGREDIENT_MEASURE_AMOUNT = "amount";
     private static final String JSON_INGREDIENT_MEASURE_UNIT_SHORT = "unitShort";
+    private static final String JSON_RECIPE_STEPS = "steps";
+    private static final String JSON_RECIPE_STEP = "step";
 
     private static final String RECIPE_API_URL = "https://api.spoonacular.com/recipes/%d/information?apiKey=%s&includeNutrition=false";
     private static final String SEARCH_RECIPE_API_URL = "https://api.spoonacular.com/recipes/complexSearch?query=%s&number=2&apiKey=%s";
+    private static final String RECIPE_INSTRUCTIONS_API_URL = "https://api.spoonacular.com/recipes/%d/analyzedInstructions?apiKey=%s";
 
     @Override
     public Recipe populateRecipe(int relId) throws JSONException, IOException {
@@ -65,6 +68,23 @@ public class Spoonacular extends RecipeApi {
 
             recipe.setIngredients(ingredientList);
             recipe.setCookingTime(json.getInt(JSON_COOKING_TIME));
+
+            URL instructionsUrl = new URL(String.format(RECIPE_INSTRUCTIONS_API_URL, relId, API_KEY));
+
+            JSONArray instructionsJson = JsonFetcher.fetchArray(instructionsUrl);
+
+            if (instructionsJson.length() > 0) {
+                JSONObject instructions = instructionsJson.getJSONObject(0);
+                JSONArray steps = instructions.getJSONArray(JSON_RECIPE_STEPS);
+                ArrayList<String> stepList = new ArrayList<>();
+
+                for (int i = 0; i < steps.length(); ++i){
+                    JSONObject step = steps.getJSONObject(i);
+                    stepList.add(step.getString(JSON_RECIPE_STEP));
+                }
+
+                recipe.setSteps(stepList);
+            }
 
             recipe.setPopulated(true);
 

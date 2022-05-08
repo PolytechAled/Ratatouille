@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this, channelId)
                 .setContentTitle(title)
-                .setContentText("id=" + ++notificationId + " - " + content)
+                .setContentText(content)
                 .setPriority(priority)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setContentIntent(pintent)
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         TextView printheure = findViewById(R.id.printheure);
         printheure.setText(s);
 
-        if(Integer.parseInt(s) == 16 || Integer.parseInt(s) == 11) sendNotificationOnChannel("Au fourneau !", "C'est de préparer le plat: {}", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
+        if(Integer.parseInt(s) == 17 || Integer.parseInt(s) == 11) sendNotificationOnChannel("Au fourneau !", "C'est l'heure de préparer le plat", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
 
     }
 }

@@ -1,5 +1,6 @@
 package fr.polytech.ihm.td4menu.ratatouille;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,5 +25,21 @@ public class JsonFetcher {
         }
 
         return new JSONObject(builder.toString());
+    }
+
+    public static JSONArray fetchArray(URL url) throws JSONException, IOException {
+        StringBuilder builder = new StringBuilder();
+        URLConnection connection = url.openConnection();
+
+        connection.setRequestProperty("User-Agent", "Ratatouille Android App");
+        connection.setRequestProperty("Accept", "application/json");
+
+        try (Scanner scanner = new Scanner(connection.getInputStream())) {
+            while (scanner.hasNext()) {
+                builder.append(scanner.nextLine()).append('\n');
+            }
+        }
+
+        return new JSONArray(builder.toString());
     }
 }
