@@ -49,6 +49,7 @@ public class Recipe implements Serializable{
      */
     protected List<String> ingredients;
 
+
     /**
      * Recipe category.
      */
