@@ -11,6 +11,7 @@ import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 public class MenuOfRecipeCreation extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
@@ -23,11 +24,20 @@ public class MenuOfRecipeCreation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_recipe_creation);
 
-        Day day = getIntent().getParcelableExtra("DAY");
-        day = new Day(0,null,new Recipe(1,"Ratatouille"));
+        //Day day = getIntent().getParcelableExtra("DAY");
+        //day = new Day(0,null,null);
+
+        Day day = Recipes.getDay();
+        Log.d("info","DAY : " + day.getDayString());
+
+        int moment;
 
         if (menuOfRecipeCreationFragment1 == null && day.getFirstRecipe() == null) {
             menuOfRecipeCreationFragment1 = new RecipeCreationFragment();
+            Bundle args = new Bundle();
+            moment = 0;
+            args.putInt("moment", moment);
+            menuOfRecipeCreationFragment1.setArguments(args);
             fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.menuOfRecipeCreation1, menuOfRecipeCreationFragment1);
             fragmentTransaction.commit();
         }else{
@@ -41,6 +51,10 @@ public class MenuOfRecipeCreation extends AppCompatActivity {
 
         if (menuOfRecipeCreationFragment2 == null && day.getSecondRecipe() == null) {
             menuOfRecipeCreationFragment2 = new RecipeCreationFragment();
+            Bundle args = new Bundle();
+            moment = 1;
+            args.putInt("moment", moment);
+            menuOfRecipeCreationFragment2.setArguments(args);
             fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.menuOfRecipeCreation2, menuOfRecipeCreationFragment2);
             fragmentTransaction.commit();
         }else{

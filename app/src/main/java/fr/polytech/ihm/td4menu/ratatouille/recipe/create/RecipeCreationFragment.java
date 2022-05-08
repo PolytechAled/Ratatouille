@@ -20,8 +20,16 @@ public class RecipeCreationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu_of_recipe_creation, container, false);
 
+        int moment = 2;
+        if(getArguments() != null){
+            moment = getArguments().getInt("moment");
+        }
+        Log.d("info","moment : " + moment);
+
+        int finalMoment = moment;
         view.findViewById(R.id.buttonMenuRecipeCreer).setOnClickListener(clic -> {
             Intent intent = new Intent(getContext(), CreateCustomRecipe.class);
+            intent.putExtra("moment", finalMoment);
             startActivity(intent);
         });
 

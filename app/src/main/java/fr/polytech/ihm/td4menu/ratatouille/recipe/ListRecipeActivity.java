@@ -19,6 +19,7 @@ import java.util.List;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
 
 public class ListRecipeActivity extends AppCompatActivity implements OnButtonClickedListener {
@@ -66,6 +67,7 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
         Intent intent = new Intent(this, MenuOfRecipeCreation.class);
         //intent.putExtra("model", (Parcelable) model_ratatouille);
         model_ratatouille.setDayNumber(position);
+        Recipes.setDay(model_ratatouille.getWeek(model_ratatouille.getWeekNumber()).getDay(position));
         startActivity(intent);
     }
 }

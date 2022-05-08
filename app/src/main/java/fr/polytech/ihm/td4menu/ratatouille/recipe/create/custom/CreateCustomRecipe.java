@@ -42,6 +42,11 @@ public class CreateCustomRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_custom_recipe);
 
+        // Midi ou Soir ?
+        int moment = getIntent().getIntExtra("moment",-1);
+        Log.d("info","moment dans create : " + moment);
+        Recipes.setMoment(moment);
+
         //create VIEW with XML layout
         this.view_customRecipe = new View_CustomRecipe(this.controller_customRecipe , this);
         this.model_customRecipe = new Model_CustomRecipe(null);    //controller not still created so the controller reference will be sent later

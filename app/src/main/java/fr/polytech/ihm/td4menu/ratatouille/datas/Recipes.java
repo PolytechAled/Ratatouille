@@ -11,6 +11,7 @@ public class Recipes {
     private Map<Integer, Recipe> recipeList;
     private Day day;
     private Recipe newRecipe;
+    private int moment;
 
     private Recipes() {
         this.recipeList = new HashMap<>();
@@ -53,5 +54,17 @@ public class Recipes {
 
     public static void setNewRecipe(Recipe newRecipe) {
         instance.newRecipe = newRecipe;
+    }
+
+    /**
+     * MIDI ou SOIR ? 0 ou 1 ?
+     * @param moment
+     */
+    public static void setMoment(int moment) {
+        instance.moment = moment;
+    }
+
+    public static int getMoment() {
+        return instance.moment;
     }
 }

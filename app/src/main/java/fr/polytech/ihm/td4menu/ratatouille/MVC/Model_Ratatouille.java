@@ -35,13 +35,12 @@ public class Model_Ratatouille extends Observable{
     private List<RecipeCategory> categoryList;
 
     public void addRecipe(Recipe recipe, int moment) {
-        Log.d("info","TEST TEST" + this.dayNumber);
-
-        Log.d("info","TEST TEST" + this.recipeList.get(this.weekNumber).getDay(this.dayNumber).getFirstRecipe().getName());
-
-
-        this.recipeList.get(this.weekNumber).getDay(this.dayNumber).setFirstRecipe(recipe);
-        Log.d("info","TEST nouveau nom : " + this.recipeList.get(this.weekNumber).getDay(this.dayNumber).getFirstRecipe().getName());
+        if(moment == 0)
+            this.recipeList.get(this.weekNumber).getDay(this.dayNumber).setFirstRecipe(recipe);
+        else if(moment == 1)
+            this.recipeList.get(this.weekNumber).getDay(this.dayNumber).setSecondRecipe(recipe);
+        else
+            Log.d("info","ERREUR : moment inconnu");
 
         Recipes.setNewRecipe(null);
 

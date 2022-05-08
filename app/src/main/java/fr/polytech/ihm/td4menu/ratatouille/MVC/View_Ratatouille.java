@@ -105,6 +105,6 @@ public class View_Ratatouille implements Observer{
     }
 
     public void addRecipe() {
-        this.controller_ratatouille.addRecipe(Recipes.getNewRecipe(), 0);
+        this.controller_ratatouille.addRecipe(Recipes.getNewRecipe(), Recipes.getMoment());
     }
 }
