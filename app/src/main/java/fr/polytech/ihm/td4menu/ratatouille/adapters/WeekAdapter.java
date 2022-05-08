@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.recipe;
+package fr.polytech.ihm.td4menu.ratatouille.adapters;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -20,6 +20,7 @@ import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.OnButtonClickedListener;
 import fr.polytech.ihm.td4menu.ratatouille.utils.SwipeController;
 import fr.polytech.ihm.td4menu.ratatouille.utils.SwipeControllerActions;
 
@@ -49,34 +50,14 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView dayName;
         RecyclerView recyclerView;
+        Context context;
 
         ViewHolder(View v){
             super(v);
-            dayName = v.findViewById(R.id.week_name_txt);
-
-            DayAdapter dayAdapter = new DayAdapter(v.getContext(), model_ratatouille, 0, callBackActivity);
-
+            this.dayName = v.findViewById(R.id.week_name_txt);
             this.recyclerView = v.findViewById(R.id.dayRecipeListFragment);
-            this.recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
-            this.recyclerView.setAdapter(dayAdapter);
-
-            SwipeController swipeController = new SwipeController(new SwipeControllerActions() {
-                @Override
-                public void onRightClicked(int position) {
-                    // TODO Remove recipe
-                    Log.i("TEST", "test");
-                }
-            }, true, false);
-
-            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
-            itemTouchhelper.attachToRecyclerView(this.recyclerView);
-
-            this.recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-                    swipeController.onDraw(c);
-                }
-            });
+            this.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            this.context = v.getContext();
 
             v.setOnClickListener(clic ->{
                 model_ratatouille.dayClick(getAbsoluteAdapterPosition());
@@ -84,9 +65,31 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
             });
         }
 
-        public void display(Day day){
-            if(day != null)
+        public void display(Day day, int id){
+            if(day != null) {
                 dayName.setText(day.getDayString());
+                DayAdapter dayAdapter = new DayAdapter(context, model_ratatouille, getAbsoluteAdapterPosition(), callBackActivity);
+
+                this.recyclerView.setAdapter(dayAdapter);
+
+                SwipeController swipeController = new SwipeController(new SwipeControllerActions() {
+                    @Override
+                    public void onRightClicked(int position) {
+                        // TODO Remove recipe
+                        Log.i("TEST", "test");
+                    }
+                }, true, false);
+
+                ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+                itemTouchhelper.attachToRecyclerView(this.recyclerView);
+
+                this.recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+                    @Override
+                    public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                        swipeController.onDraw(c);
+                    }
+                });
+            }
         }
 
         @Override
@@ -114,7 +117,7 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull WeekAdapter.ViewHolder viewHolder, int position){
-        viewHolder.display(dayList.get(position));
+        viewHolder.display(dayList.get(position), position);
     }
 
     @Override

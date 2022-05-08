@@ -2,9 +2,7 @@ package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
 import androidx.fragment.app.Fragment;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +15,11 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.adapters.RecipeDetailsAdapter;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.repository.CalendarRepository;
-import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeCategory;
 
 public class RecipeDetailsFragment extends Fragment {
 

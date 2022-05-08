@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.recipe;
+package fr.polytech.ihm.td4menu.ratatouille.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,6 +14,7 @@ import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.OnButtonClickedListener;
 
 public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder>{
 

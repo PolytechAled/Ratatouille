@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Recipes {
     private static final Recipes instance = new Recipes();
@@ -17,8 +18,8 @@ public class Recipes {
         this.recipeList = new HashMap<>();
     }
 
-    public static Collection<Recipe> getRecipeList() {
-        return instance.recipeList.values();
+    public static List<Recipe> getRecipeList() {
+        return instance.recipeList.values().stream().collect(Collectors.toList());
     }
 
     public static void add(Recipe recipe) {

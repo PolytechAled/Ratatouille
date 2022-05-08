@@ -24,21 +24,23 @@ public class MenuOfRecipeCreation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_of_recipe_creation);
+        render(true);
+    }
 
-        //Day day = getIntent().getParcelableExtra("DAY");
-        //day = new Day(0,null,null);
-
+    private void render(boolean firstRender) {
         Day day = Recipes.getDay();
         Log.d("info","DAY : " + day.getDayString());
         TextView titre = findViewById(R.id.menuOfecipeCreationTitle);
-        String jour = (String) titre.getText();
-        jour += day.getDayString();
-        Log.d("info","test jour : " + jour);
-        titre.setText(jour);
+        if (firstRender) {
+            String jour = (String) titre.getText();
+            jour += day.getDayString();
+            Log.d("info", "test jour : " + jour);
+            titre.setText(jour);
+        }
 
         int moment;
 
-        if (menuOfRecipeCreationFragment1 == null && day.getFirstRecipe() == null) {
+        if (menuOfRecipeCreationFragment1 == null || day.getFirstRecipe() == null) {
             menuOfRecipeCreationFragment1 = new RecipeCreationFragment();
             Bundle args = new Bundle();
             moment = 0;
@@ -55,7 +57,7 @@ public class MenuOfRecipeCreation extends AppCompatActivity {
             fragmentTransaction.commit();
         }
 
-        if (menuOfRecipeCreationFragment2 == null && day.getSecondRecipe() == null) {
+        if (menuOfRecipeCreationFragment2 == null || day.getSecondRecipe() == null) {
             menuOfRecipeCreationFragment2 = new RecipeCreationFragment();
             Bundle args = new Bundle();
             moment = 1;
@@ -71,5 +73,11 @@ public class MenuOfRecipeCreation extends AppCompatActivity {
             fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.menuOfRecipeCreation2, recipePresFragment);
             fragmentTransaction.commit();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        render(false);
     }
 }

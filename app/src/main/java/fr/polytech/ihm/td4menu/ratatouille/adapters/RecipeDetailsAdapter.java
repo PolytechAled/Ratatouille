@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.recipe;
+package fr.polytech.ihm.td4menu.ratatouille.adapters;
 
 import android.content.Context;
 import android.util.Log;
