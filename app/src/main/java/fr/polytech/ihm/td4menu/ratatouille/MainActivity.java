@@ -1,7 +1,7 @@
 package fr.polytech.ihm.td4menu.ratatouille;
 
 
-import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_3_ID;
+import static fr.polytech.ihm.td4menu.ratatouille.repository.NotificationRepository.CHANNEL_3_ID;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -15,9 +15,6 @@ import androidx.core.app.NotificationManagerCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
 
 public class MainActivity extends AppCompatActivity {
 

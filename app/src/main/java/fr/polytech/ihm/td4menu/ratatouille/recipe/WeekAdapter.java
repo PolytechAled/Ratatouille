@@ -1,6 +1,7 @@
 package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +20,8 @@ import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
+import fr.polytech.ihm.td4menu.ratatouille.utils.SwipeController;
+import fr.polytech.ihm.td4menu.ratatouille.utils.SwipeControllerActions;
 
 public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
 
@@ -55,6 +59,24 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
             this.recyclerView = v.findViewById(R.id.dayRecipeListFragment);
             this.recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
             this.recyclerView.setAdapter(dayAdapter);
+
+            SwipeController swipeController = new SwipeController(new SwipeControllerActions() {
+                @Override
+                public void onRightClicked(int position) {
+                    // TODO Remove recipe
+                    Log.i("TEST", "test");
+                }
+            }, true, false);
+
+            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+            itemTouchhelper.attachToRecyclerView(this.recyclerView);
+
+            this.recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+                @Override
+                public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                    swipeController.onDraw(c);
+                }
+            });
 
             v.setOnClickListener(clic ->{
                 model_ratatouille.dayClick(getAbsoluteAdapterPosition());

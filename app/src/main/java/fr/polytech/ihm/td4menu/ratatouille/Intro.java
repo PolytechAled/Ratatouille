@@ -1,21 +1,11 @@
 package fr.polytech.ihm.td4menu.ratatouille;
 
-import static fr.polytech.ihm.td4menu.ratatouille.Application.Notifications.CHANNEL_3_ID;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 

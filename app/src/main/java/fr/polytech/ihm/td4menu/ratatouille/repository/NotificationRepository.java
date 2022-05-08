@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.Application;
+package fr.polytech.ihm.td4menu.ratatouille.repository;
 
 import android.app.Application;
 import android.app.NotificationChannel;
@@ -7,7 +7,7 @@ import android.os.Build;
 
 import java.util.Objects;
 
-public class Notifications extends Application {
+public class NotificationRepository extends Application {
     public static final String CHANNEL_1_ID = "channel LOW";
     public static final String CHANNEL_2_ID = "channel DEFAULT";
     public static final String CHANNEL_3_ID = "channel HIGH";
