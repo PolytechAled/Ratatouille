@@ -19,6 +19,7 @@ public class Spoonacular extends RecipeApi {
     private static final String JSON_TITLE = "title";
     private static final String JSON_COOKING_TIME = "readyInMinutes";
     private static final String JSON_RESULTS = "results";
+    private static final String JSON_RECIPES = "recipes";
     private static final String JSON_INGREDIENTS = "extendedIngredients";
     private static final String JSON_INGREDIENT_NAME = "name";
     private static final String JSON_INGREDIENT_MEASURES = "measures";
@@ -34,6 +35,9 @@ public class Spoonacular extends RecipeApi {
             "diet=%s&" +
             "intolerances=%s&" +
             "instructionsRequired=true&" +
+            // TODO remove limit
+            "number=2";
+    private static final String RANDOM_RECIPES_API_URL = "https://api.spoonacular.com/recipes/random?apiKey=%s&" +
             // TODO remove limit
             "number=2";
     private static final String RECIPE_INSTRUCTIONS_API_URL = "https://api.spoonacular.com/recipes/%d/analyzedInstructions?apiKey=%s";
@@ -114,6 +118,34 @@ public class Spoonacular extends RecipeApi {
 
             if (json.has(JSON_RESULTS)){
                 JSONArray array = json.getJSONArray(JSON_RESULTS);
+
+                for (int i = 0; i < array.length(); ++i){
+                    JSONObject recipe = array.getJSONObject(i);
+
+                    recipeList.add(new SpRecipe(recipe.getInt(JSON_ID), recipe.getString(JSON_TITLE)));
+                }
+            }
+
+            return recipeList;
+        } catch (IOException | JSONException e) {
+            Log.d("Ratatouille", "Could not connect to the Internet.");
+            throw e;
+        }
+    }
+
+    @Override
+    public List<Recipe> randomRecipes() throws JSONException, IOException {
+        List<Recipe> recipeList = new ArrayList<>();
+
+        try {
+            String path = String.format(RANDOM_RECIPES_API_URL, API_KEY);
+            Log.d("Ratatouille", "Connecting to \"" + path + "\"");
+            URL url = new URL(path);
+
+            JSONObject json = JsonFetcher.fetch(url);
+
+            if (json.has(JSON_RECIPES)){
+                JSONArray array = json.getJSONArray(JSON_RECIPES);
 
                 for (int i = 0; i < array.length(); ++i){
                     JSONObject recipe = array.getJSONObject(i);
