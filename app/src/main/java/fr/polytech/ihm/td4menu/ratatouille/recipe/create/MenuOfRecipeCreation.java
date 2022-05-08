@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
@@ -29,6 +30,11 @@ public class MenuOfRecipeCreation extends AppCompatActivity {
 
         Day day = Recipes.getDay();
         Log.d("info","DAY : " + day.getDayString());
+        TextView titre = findViewById(R.id.menuOfecipeCreationTitle);
+        String jour = (String) titre.getText();
+        jour += day.getDayString();
+        Log.d("info","test jour : " + jour);
+        titre.setText(jour);
 
         int moment;
 

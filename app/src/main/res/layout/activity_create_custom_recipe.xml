@@ -42,26 +42,28 @@
             <EditText
                 android:id="@+id/customRecipeTime"
                 android:layout_width="match_parent"
-                android:hint="Temps en minute"
-                android:layout_height="wrap_content"
+                android:layout_height="16dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="Temps en minute"
                 android:inputType="time" />
 
             <Button
                 android:id="@+id/takeAPicture"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_weight="1"
-                android:text="Take a photo" />
+                android:layout_gravity="center"
+                android:text="Photo" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/customRecipeImage"
             android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             app:srcCompat="@drawable/img" />
 
     </LinearLayout>
@@ -100,12 +102,13 @@
         android:layout_width="409dp"
         android:layout_height="100dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -128,7 +131,7 @@
         android:layout_width="409dp"
         android:layout_height="100dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Ingrédients"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintStart_toStartOf="parent" />
@@ -166,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Etapes"
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintStart_toStartOf="parent" />
