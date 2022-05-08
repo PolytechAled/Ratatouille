@@ -29,7 +29,13 @@ public class Spoonacular extends RecipeApi {
     private static final String JSON_RECIPE_STEP = "step";
 
     private static final String RECIPE_API_URL = "https://api.spoonacular.com/recipes/%d/information?apiKey=%s&includeNutrition=false";
-    private static final String SEARCH_RECIPE_API_URL = "https://api.spoonacular.com/recipes/complexSearch?query=%s&number=2&apiKey=%s";
+    private static final String SEARCH_RECIPE_API_URL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=%s&query=%s&" +
+            "cuisine=%s&" +
+            "diet=%s&" +
+            "intolerances=%s&" +
+            "instructionsRequired=true&" +
+            // TODO remove limit
+            "number=2";
     private static final String RECIPE_INSTRUCTIONS_API_URL = "https://api.spoonacular.com/recipes/%d/analyzedInstructions?apiKey=%s";
 
     @Override
@@ -96,11 +102,11 @@ public class Spoonacular extends RecipeApi {
     }
 
     @Override
-    public List<Recipe> searchRecipes(String query) throws JSONException, IOException {
+    public List<Recipe> searchRecipes(String query, String cuisine, String diet, String intolerances) throws JSONException, IOException {
         List<Recipe> recipeList = new ArrayList<>();
 
         try {
-            String path = String.format(SEARCH_RECIPE_API_URL, query, API_KEY);
+            String path = String.format(SEARCH_RECIPE_API_URL, API_KEY, query, cuisine, diet, intolerances);
             Log.d("Ratatouille", "Connecting to \"" + path + "\"");
             URL url = new URL(path);
 
