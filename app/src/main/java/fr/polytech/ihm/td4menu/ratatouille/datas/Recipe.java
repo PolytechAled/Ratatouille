@@ -60,6 +60,14 @@ public class Recipe implements Serializable{
         this.hasOrigin = false;
     }
 
+    public Recipe(int id, String nameText, String timeText, String ingredientsText, String stepText) {
+        this.id = id;
+        this.name = nameText;
+        this.cookingTime = Integer.parseInt(timeText);
+        this.steps.add(ingredientsText);
+        this.ingredients.add(stepText);
+    }
+
     public int getId() {
         return id;
     }

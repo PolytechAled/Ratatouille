@@ -57,15 +57,22 @@ public class CreateCustomRecipe extends AppCompatActivity {
             startActivityForResult(intent, PermissionFactory.REQUEST_ID_IMAGE_CAPTURE);      // Start camera and wait for the results.
         });
 
-        findViewById(R.id.customRecipeButtonValider).setOnClickListener(clic -> {
-            Log.d("info","Recipe custom create");
-            String name = model_customRecipe.getName();
-            //CustomRecipeFactory customRecipeFactory = new CustomRecipeFactory(name,"custom",0, new ArrayList<>(), new ArrayList<>());
+        findViewById(R.id.customRecipeButtonRetour).setOnClickListener(clic -> {
+            finish();
         });
 
         findViewById(R.id.customRecipeButtonValider).setOnClickListener(clic -> {
-            EditText textView = findViewById(R.id.customRecipeName);
-            Recipe newRecipe = new Recipe(55, textView.getText().toString());
+            EditText name = findViewById(R.id.customRecipeName);
+            EditText time = findViewById(R.id.customRecipeTime);
+            EditText ingredients = findViewById(R.id.customRecipeIngredients);
+            EditText step = findViewById(R.id.customRecipeEtape);
+
+            String nameText = name.getText().toString();
+            String timeText = time.getText().toString();
+            String ingredientsText = ingredients.getText().toString();
+            String stepText = step.getText().toString();
+
+            Recipe newRecipe = new Recipe(55, nameText,timeText,ingredientsText,stepText);
             Recipes.getDay().setFirstRecipe(newRecipe);
             finish();
         });
