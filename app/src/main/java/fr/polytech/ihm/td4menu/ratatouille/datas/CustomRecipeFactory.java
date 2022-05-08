@@ -9,13 +9,15 @@ public class CustomRecipeFactory extends RecipeFactory {
     private final int cookingTime;
     private final List<RecipeCategory> categoryList;
     private final List<String> ingredients;
+    private final List<String> instructions;
 
-    public CustomRecipeFactory(String title, String origin, int cookingTime, List<RecipeCategory> categoryList, List<String> ingredients){
+    public CustomRecipeFactory(String title, String origin, int cookingTime, List<RecipeCategory> categoryList, List<String> ingredients, List<String> instructions){
         this.title = title;
         this.origin = origin;
         this.cookingTime = cookingTime;
         this.categoryList = categoryList;
         this.ingredients = ingredients;
+        this.instructions = instructions;
     }
 
     @Override
@@ -25,6 +27,7 @@ public class CustomRecipeFactory extends RecipeFactory {
         recipe.setCookingTime(cookingTime);
         recipe.setCategoryList(categoryList);
         recipe.setIngredients(ingredients);
+        recipe.setSteps(instructions);
         Recipes.add(recipe);
         return recipe;
     }

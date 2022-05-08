@@ -27,6 +27,8 @@ public class Model_Ratatouille extends Observable{
     private Controller_Ratatouille controller_Ratatouille;
     private VIEW_TYPE updateType;
     private ViewGroup layout;
+    private List<Recipe> recipes;
+    private List<RecipeCategory> categoryList;
 
     public void test() {
         setChanged();
@@ -50,10 +52,10 @@ public class Model_Ratatouille extends Observable{
     }
 
     public void build(){
-        List<Recipe> recipes = new ArrayList<>();
+        recipes = new ArrayList<>();
 
-        List<RecipeCategory> categoryList = new ArrayList<>();
-        categoryList.add(RecipeCategory.FIVE_VEGETABLE);
+        categoryList = new ArrayList<>();
+        categoryList.add(RecipeCategory.FAST_FOOD);
         categoryList.add(RecipeCategory.VEGAN);
         categoryList.add(RecipeCategory.BIO);
 
@@ -62,13 +64,18 @@ public class Model_Ratatouille extends Observable{
         ingredients.add("Fleur");
         ingredients.add("Patate");
 
-        recipes.add(new CustomRecipeFactory("Recette1", "France", 75, categoryList,ingredients).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette2", "France", 15, categoryList,ingredients).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette3", "Belgique", 56, categoryList,ingredients).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette4", "Chine", 45, categoryList,ingredients).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette5", "Ecosse", 45, categoryList,ingredients).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15, categoryList,ingredients).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette7", "France", 10, categoryList,ingredients).instantiate());
+        List<String> instructions = new ArrayList<>();
+        instructions.add("Faire ça");
+        instructions.add("Faire un autre ça");
+        instructions.add("Faire un autre de l'autre ça");
+
+        recipes.add(new CustomRecipeFactory("Recette1", "France", 75, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette2", "France", 15, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette3", "Belgique", 56, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette4", "Chine", 45, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette5", "Ecosse", 45, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Recette7", "France", 10, categoryList,ingredients,instructions).instantiate());
 
         this.recipeList.put(0,new Week(Arrays.asList(new Day(0, recipes.get(0), recipes.get(1)), new Day(1, recipes.get(0), recipes.get(1))),0));
 
@@ -138,5 +145,9 @@ public class Model_Ratatouille extends Observable{
 
     public VIEW_TYPE getUpdateType() {
         return updateType;
+    }
+
+    public List<RecipeCategory> getRecipeCategories(){
+        return categoryList;
     }
 }
