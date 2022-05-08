@@ -64,7 +64,7 @@ public class View_Ratatouille implements Observer{
         Log.d("info","Update View Ratatouille");
         switch (model.getUpdateType()){
             case VIEW_LISTRECIPE:
-                if (!modelCreated) {
+                if (true) {
                     //recipeAdapter.updateModel(model);
                     this.weekAdapter = new WeekAdapter(this.layout.getContext(), this,model, callBackActivity);
 
@@ -75,6 +75,7 @@ public class View_Ratatouille implements Observer{
 
                     modelCreated = true;
                 }else {
+                    Log.d("info","Refresh");
                     this.weekAdapter.refresh(model);
                 }
                 Log.d("info","Update View listRecipe");
@@ -103,7 +104,7 @@ public class View_Ratatouille implements Observer{
         }
     }
 
-    public void test() {
-        this.controller_ratatouille.test();
+    public void addRecipe() {
+        this.controller_ratatouille.addRecipe(Recipes.getNewRecipe(), 0);
     }
 }

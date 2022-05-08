@@ -42,13 +42,11 @@
             <EditText
                 android:id="@+id/customRecipeTime"
                 android:layout_width="match_parent"
+                android:hint="Temps en minute"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Temps en minute"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:textSize="12dp" />
+                android:inputType="time" />
 
             <Button
                 android:id="@+id/takeAPicture"

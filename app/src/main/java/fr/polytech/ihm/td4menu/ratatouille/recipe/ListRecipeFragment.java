@@ -60,7 +60,7 @@ public class ListRecipeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        view.test();
+        view.addRecipe();
     }
 
     // Create callback to parent activity

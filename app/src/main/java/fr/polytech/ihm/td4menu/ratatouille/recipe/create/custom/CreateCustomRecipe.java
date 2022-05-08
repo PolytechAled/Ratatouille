@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC.Controller_CustomRecipe;
@@ -68,12 +69,15 @@ public class CreateCustomRecipe extends AppCompatActivity {
             EditText step = findViewById(R.id.customRecipeEtape);
 
             String nameText = name.getText().toString();
-            String timeText = time.getText().toString();
+            int timeVal = Integer.parseInt(time.getText().toString());
             String ingredientsText = ingredients.getText().toString();
             String stepText = step.getText().toString();
 
-            Recipe newRecipe = new Recipe(55, nameText,timeText,ingredientsText,stepText);
-            Recipes.getDay().setFirstRecipe(newRecipe);
+            //Recipe newRecipe = new Recipe(55, nameText,timeVal,ingredientsText,stepText);
+            Recipes.setNewRecipe(new CustomRecipeFactory(nameText,"Fait maison",timeVal,ingredientsText,stepText).instantiate());
+            //Recipes.getDay().setFirstRecipe(newRecipe);
+            //Recipes.add(newRecipe);
+            //Recipes.setNewRecipe(newRecipe);
             finish();
         });
     }

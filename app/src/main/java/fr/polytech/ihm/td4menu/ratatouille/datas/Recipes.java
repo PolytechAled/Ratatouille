@@ -10,6 +10,7 @@ public class Recipes {
 
     private Map<Integer, Recipe> recipeList;
     private Day day;
+    private Recipe newRecipe;
 
     private Recipes() {
         this.recipeList = new HashMap<>();
@@ -44,5 +45,13 @@ public class Recipes {
 
     public static void setDay(Day da) {
         instance.day = da;
+    }
+
+    public static Recipe getNewRecipe() {
+        return instance.newRecipe;
+    }
+
+    public static void setNewRecipe(Recipe newRecipe) {
+        instance.newRecipe = newRecipe;
     }
 }

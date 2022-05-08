@@ -1,5 +1,6 @@
 package fr.polytech.ihm.td4menu.ratatouille.datas;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +19,19 @@ public class CustomRecipeFactory extends RecipeFactory {
         this.categoryList = categoryList;
         this.ingredients = ingredients;
         this.instructions = instructions;
+    }
+
+    public CustomRecipeFactory(String nameText, String fait_maison, int timeVal, String ingredientsText, String stepText) {
+        super();
+        this.ingredients = new ArrayList<>();
+        this.instructions = new ArrayList<>();
+        this.categoryList = new ArrayList<>();
+
+        this.title = nameText;
+        this.origin = fait_maison;
+        this.cookingTime = timeVal;
+        this.ingredients.add(ingredientsText);
+        this.instructions.add(stepText);
     }
 
     @Override

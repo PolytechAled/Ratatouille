@@ -1,6 +1,9 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -24,15 +27,35 @@ public class Model_Ratatouille extends Observable{
     private Map<Integer, Week> recipeList;
     private int recipeShow;
     private int weekNumber;
+    private int dayNumber;
     private Controller_Ratatouille controller_Ratatouille;
     private VIEW_TYPE updateType;
     private ViewGroup layout;
     private List<Recipe> recipes;
     private List<RecipeCategory> categoryList;
 
-    public void test() {
+    public void addRecipe(Recipe recipe, int moment) {
+        Log.d("info","TEST TEST" + this.dayNumber);
+
+        Log.d("info","TEST TEST" + this.recipeList.get(this.weekNumber).getDay(this.dayNumber).getFirstRecipe().getName());
+
+
+        this.recipeList.get(this.weekNumber).getDay(this.dayNumber).setFirstRecipe(recipe);
+        Log.d("info","TEST nouveau nom : " + this.recipeList.get(this.weekNumber).getDay(this.dayNumber).getFirstRecipe().getName());
+
+        Recipes.setNewRecipe(null);
+
+        this.updateType = VIEW_TYPE.VIEW_LISTRECIPE;
         setChanged();
         notifyObservers();
+
+        this.updateType = VIEW_TYPE.VIEW_DETAILSRECIPE;
+        setChanged();
+        notifyObservers();
+    }
+
+    public void setDayNumber(int position) {
+        this.dayNumber = position;
     }
 
     public enum VIEW_TYPE{
@@ -52,6 +75,7 @@ public class Model_Ratatouille extends Observable{
     }
 
     public void build(){
+        Log.d("info","BUILD DATASET");
         recipes = new ArrayList<>();
 
         categoryList = new ArrayList<>();
@@ -103,6 +127,17 @@ public class Model_Ratatouille extends Observable{
             setChanged();
             notifyObservers();
         }
+    }
+
+    public void addARecipe(Recipe recipe, int day, int moment){
+        if(moment == 0)
+            this.recipeList.get(this.weekNumber).getDay(day).setFirstRecipe(recipe);
+        else if(moment == 1)
+            this.recipeList.get(this.weekNumber).getDay(day).setSecondRecipe(recipe);
+        this.updateType = VIEW_TYPE.VIEW_LISTRECIPE;
+
+        setChanged();
+        notifyObservers();
     }
 
     public void deleteRecipe(int weekNumber, int id) {

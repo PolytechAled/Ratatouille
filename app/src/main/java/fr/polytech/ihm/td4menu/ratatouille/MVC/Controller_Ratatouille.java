@@ -3,6 +3,8 @@ package fr.polytech.ihm.td4menu.ratatouille.MVC;
 import android.util.Log;
 import android.view.ViewGroup;
 
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+
 public class Controller_Ratatouille implements IViewClick {
 
     private Model_Ratatouille model_ratatouille;
@@ -14,20 +16,6 @@ public class Controller_Ratatouille implements IViewClick {
 /*
         LinearLayout manage = ((ConstraintLayout)view.getLayout()).findViewById(R.id.manage);
         manage.findViewById(R.id.addTeam1).setOnClickListener(click ->  addPersonInTeam( manage, Model_Kindergarten.Team.TEAM1));*/
-    }
-
-    /**
-     * Add a recipe
-     * @param manage
-     */
-    private void addRecipe(ViewGroup manage) {
-        // TODO : Recupe à partir de manage ou Factory?
-        // TextView origin = manage.findId...
-        // TextView recipeName =
-        // ...
-        // Week week =
-        //Recipe recipe =
-        //model_ratatouille.addRecipe(weekNumber,recipe);
     }
 
     /**
@@ -69,7 +57,10 @@ public class Controller_Ratatouille implements IViewClick {
         }
     }
 
-    public void test() {
-        model_ratatouille.test();
+    public void addRecipe(Recipe recipe, int moment) {
+        if(recipe != null) {
+            Log.d("info", "Nom de la recette : " + recipe.getName());
+            model_ratatouille.addRecipe(recipe, moment);
+        }
     }
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -63,6 +64,8 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
     @Override
     public void onButtonClicked2(Model_Ratatouille model_ratatouille, int position) {
         Intent intent = new Intent(this, MenuOfRecipeCreation.class);
+        //intent.putExtra("model", (Parcelable) model_ratatouille);
+        model_ratatouille.setDayNumber(position);
         startActivity(intent);
     }
 }

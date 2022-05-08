@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 
+import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
