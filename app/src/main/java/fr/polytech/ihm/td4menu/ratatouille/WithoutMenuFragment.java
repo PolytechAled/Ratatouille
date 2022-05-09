@@ -1,5 +1,6 @@
 package fr.polytech.ihm.td4menu.ratatouille;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,10 +17,13 @@ import android.widget.Toast;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Spoonacular;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
 public class WithoutMenuFragment extends Fragment{
     @Override
@@ -44,16 +48,21 @@ public class WithoutMenuFragment extends Fragment{
             String origin = spinnerOrigin.getSelectedItem().toString();
             String diet = spinnerRegime.getSelectedItem().toString();
             Spoonacular spoonacular = new Spoonacular();
-            try {
-                String n = "";
-                List<Recipe> recipeList = spoonacular.searchRecipes(n,origin,diet,n);
-                //Toast.makeText(getContext(),recipeList)
-                int test = 0;
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            new Thread(() -> {
+                try {
+                    String n = " ";
+                    List<Recipe> recipeList = spoonacular.searchRecipes(n, origin, diet, n);
+                    Recipes.setRecipeListGenerate(recipeList);
+
+                    Intent intent = new Intent(getContext(), ListRecipeActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
         });
 
         return view;

@@ -1,5 +1,9 @@
 package fr.polytech.ihm.td4menu.ratatouille.datas;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +17,8 @@ public class Recipes {
     private Day day;
     private Recipe newRecipe;
     private int moment;
+    private List<Recipe> recipeListGenerate;
+    private Week weekGenerate;
 
     private Recipes() {
         this.recipeList = new HashMap<>();
@@ -67,5 +73,58 @@ public class Recipes {
 
     public static int getMoment() {
         return instance.moment;
+    }
+
+    public static List<Recipe> getRecipeListGenerate() {
+        return instance.recipeListGenerate;
+    }
+
+    public static void setRecipeListGenerate(List<Recipe> recipeListGenerate) {
+        instance.recipeListGenerate = recipeListGenerate;
+        for(Recipe recipe : recipeListGenerate)
+            add(recipe);
+        instance.buildWeek();
+    }
+
+    public static Week getWeekGenerate() {
+        return instance.weekGenerate;
+    }
+
+    public static void setWeekGenerate(Week weekGenerate) {
+        instance.weekGenerate = weekGenerate;
+    }
+
+    public void buildWeek(){
+        Spoonacular spoonacular = new Spoonacular();
+        new Thread(()-> {
+            List<Day> dayList = new ArrayList<>();
+            int j = 0;
+            for (int i = 0; i < instance.recipeListGenerate.size(); i++) {
+                Recipe recipe1 = null;
+                Recipe recipe2 = null;
+                Day day;
+
+                try {
+                    recipe1 = spoonacular.populateRecipe(instance.recipeListGenerate.get(i).getRelId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (i < instance.recipeListGenerate.size() - 1) {
+                    try {
+                        recipe2 = spoonacular.populateRecipe(instance.recipeListGenerate.get(++i).getRelId());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                day = new Day(j++, recipe1, recipe2);
+                dayList.add(day);
+            }
+            instance.setWeekGenerate(new Week(dayList,0));
+        }).start();
     }
 }

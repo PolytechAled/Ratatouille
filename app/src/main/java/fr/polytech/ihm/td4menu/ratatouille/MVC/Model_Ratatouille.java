@@ -1,11 +1,15 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.ViewGroup;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,12 +18,14 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Optional;
 
+import fr.polytech.ihm.td4menu.ratatouille.MenuGenerationActivity;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeCategory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Spoonacular;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Week;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 
@@ -76,7 +82,7 @@ public class Model_Ratatouille extends Observable{
     public void build(){
         Log.d("info","BUILD DATASET");
         recipes = new ArrayList<>();
-
+/*
         categoryList = new ArrayList<>();
         categoryList.add(RecipeCategory.FAST_FOOD);
         categoryList.add(RecipeCategory.VEGAN);
@@ -99,13 +105,15 @@ public class Model_Ratatouille extends Observable{
         recipes.add(new CustomRecipeFactory("Recette5", "Ecosse", 45, categoryList,ingredients,instructions).instantiate());
         recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15, categoryList,ingredients,instructions).instantiate());
         recipes.add(new CustomRecipeFactory("Recette7", "France", 10, categoryList,ingredients,instructions).instantiate());
+*/
+        //this.recipeList.put(0,new Week(Arrays.asList(new Day(0, recipes.get(0), null), new Day(1, recipes.get(0), recipes.get(2))),0));
+        Week week = Recipes.getWeekGenerate();
 
-        this.recipeList.put(0,new Week(Arrays.asList(new Day(0, recipes.get(0), null), new Day(1, recipes.get(0), recipes.get(2))),0));
-
+        this.recipeList.put(0,week);
         this.updateType = VIEW_TYPE.VIEW_LISTRECIPE;
-
         setChanged();
         notifyObservers();
+
     }
 
     public Week getWeek(int weekNumber) {
