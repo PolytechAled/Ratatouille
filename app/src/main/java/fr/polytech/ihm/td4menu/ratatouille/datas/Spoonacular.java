@@ -51,7 +51,7 @@ public class Spoonacular extends RecipeApi {
             Log.d("Ratatouille", "Connecting to \"" + path + "\"");
             URL url = new URL(path);
 
-            JSONObject json = JsonFetcher.fetch(url);
+            JSONObject json = JsonFetcher.fetchObject(url);
             System.out.println(json);
 
             if (recipe == null){
@@ -114,7 +114,7 @@ public class Spoonacular extends RecipeApi {
             Log.d("Ratatouille", "Connecting to \"" + path + "\"");
             URL url = new URL(path);
 
-            JSONObject json = JsonFetcher.fetch(url);
+            JSONObject json = JsonFetcher.fetchObject(url);
 
             if (json.has(JSON_RESULTS)){
                 JSONArray array = json.getJSONArray(JSON_RESULTS);
@@ -142,7 +142,7 @@ public class Spoonacular extends RecipeApi {
             Log.d("Ratatouille", "Connecting to \"" + path + "\"");
             URL url = new URL(path);
 
-            JSONObject json = JsonFetcher.fetch(url);
+            JSONObject json = JsonFetcher.fetchObject(url);
 
             if (json.has(JSON_RECIPES)){
                 JSONArray array = json.getJSONArray(JSON_RECIPES);

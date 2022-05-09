@@ -13,8 +13,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import fr.polytech.ihm.td4menu.ratatouille.datas.APIRecipeFactory;
+import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Spoonacular;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +57,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new Thread(()-> {
+            try {
+                List<Recipe> recipes = new Spoonacular().searchRecipes("pancake", null, null, null);
+                System.out.println(recipes);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                new APIRecipeFactory(DataSource.SPOONACULAR, 324694).instantiate();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
 
         Intent intent = new Intent(this, Intro.class);
         startActivity(intent);
