@@ -5,8 +5,8 @@ import java.util.List;
 public class Week {
     List<Day> days;
     int weekNumber;
-    String origin;
-    String diet;
+    String origin = "";
+    String diet = "";
 
     public Week(List<Day> days , int weekNumber) {
         this.days = days;

@@ -131,11 +131,11 @@ public class Spoonacular extends RecipeApi {
                 }
             }
 
-            return recipeList;
         } catch (IOException | JSONException e) {
             Log.d("Ratatouille", "Could not connect to the Internet.");
-            throw e;
         }
+
+        return recipeList;
     }
 
     @Override

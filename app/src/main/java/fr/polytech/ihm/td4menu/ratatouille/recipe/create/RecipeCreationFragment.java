@@ -12,23 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.SearchRecipeActivity;
 import fr.polytech.ihm.td4menu.ratatouille.contracts.SearchRecipeContract;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
-import fr.polytech.ihm.td4menu.ratatouille.Intro;
-import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Spoonacular;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.CreateCustomRecipe;
 
 public class RecipeCreationFragment extends Fragment {
@@ -63,14 +57,38 @@ public class RecipeCreationFragment extends Fragment {
             mSearchRecipe.launch(this.moment);
         });
 
+        view.findViewById(R.id.buttonMenuRecipeGenerer).setOnClickListener(clic -> {
+            Recipe newRecipe = randomRecipe();
+            Recipes.getDay().setRecipe(moment, newRecipe);
+            Recipes.setMoment(moment);
+            Recipes.setNewRecipe(newRecipe);
+            getActivity().recreate();
+        });
+
+
         Log.d("info", "Fragtest");
         return view;
     }
 
-    public Recipe randomRecipe() throws JSONException, IOException {
+    public Recipe randomRecipe() {
         Spoonacular spoonacular = new Spoonacular();
-        List<Recipe> recipeList = spoonacular.searchRecipes("", Recipes.getWeek().getOrigin(),Recipes.getWeek().getDiet(),"");
-        Collections.shuffle(recipeList);
-        return recipeList.get(0);
+        AtomicReference<List<Recipe>> recipeList = new AtomicReference<>();
+        Thread s = new Thread(() -> {
+            recipeList.set(Recipes.getRecipeList());
+        });
+
+        try {
+            s.start();
+            s.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Collections.shuffle(recipeList.get());
+        if(recipeList.get() != null && recipeList.get().size() > 0)
+        {
+            return recipeList.get().get(0);
+        }
+        return null;
     }
 }
