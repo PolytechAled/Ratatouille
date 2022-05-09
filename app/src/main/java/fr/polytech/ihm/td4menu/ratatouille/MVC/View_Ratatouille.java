@@ -1,9 +1,14 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +17,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.adapters.RecipeDetailsAdapter;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeCategory;
 
@@ -76,25 +83,26 @@ public class View_Ratatouille implements Observer{
                 break;
 
             case VIEW_DETAILSRECIPE:
-                /*Recipe recipe = model.getRecipeShow();
-                TextView textViewName = model.getLayout().findViewById(R.id.recipeDetailName);
-                textViewName.setText(recipe.getName());
-
+                Recipe recipe = Recipes.get(model.getRecipeShow());
+                if (recipe == null) break;
+                TextView recipeName= model.getLayout().findViewById(R.id.recipeDetailName);
                 TextView textViewTime = model.getLayout().findViewById(R.id.recipeDetailTime);
-                textViewTime.setText(recipe.getCookingTime());
-
                 GridView gridViewPictos = model.getLayout().findViewById(R.id.recipeDetailPictos);
-                this.arrayAdapter = new ArrayAdapter<>(this.layout.getContext(), android.R.layout.simple_list_item_1, recipe.getCategoryList());
-                gridViewPictos.setAdapter(this.arrayAdapter);
-
-                ImageView imageView = model.getLayout().findViewById(R.id.recipeDetailImage);
-                imageView.setImageURI(Uri.parse(recipe.getImageUrl()));
-
                 ListView listViewIngredient = model.getLayout().findViewById(R.id.recipeDetailIngredients);
-
                 ListView listViewInstruction = model.getLayout().findViewById(R.id.recipeDetailInstructions);
-                Log.d("info","Update View detailsRecipe ");
-                break;*/
+
+                recipeName.setText(recipe.getName());
+                textViewTime.setText(" "+ recipe.getCookingTime() + " minutes");
+                ArrayAdapter arraysAdapterIngredient = new ArrayAdapter<String>(this.layout.getContext(), android.R.layout.simple_list_item_1, recipe.getIngredients());
+                listViewIngredient.setAdapter(arraysAdapterIngredient);
+
+                ArrayAdapter arraysAdapterInstruction = new ArrayAdapter<String>(this.layout.getContext(), android.R.layout.simple_list_item_1, recipe.getSteps());
+                listViewInstruction.setAdapter(arraysAdapterInstruction);
+
+                RecipeDetailsAdapter recipeDetailsAdapter = new RecipeDetailsAdapter(this.layout.getContext(),recipe.getCategoryList());
+                gridViewPictos.setAdapter(recipeDetailsAdapter);
+
+                break;
         }
     }
 

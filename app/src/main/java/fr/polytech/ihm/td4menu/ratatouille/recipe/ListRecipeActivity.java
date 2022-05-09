@@ -42,7 +42,7 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
 
     @Override
     public void onButtonClicked(Model_Ratatouille model_ratatouille, int position){
-        List<Recipe> recipeList = model_ratatouille.getWeek(model_ratatouille.getWeekNumber()).getDay(0).getAll();
+        List<Recipe> recipeList = model_ratatouille.getWeek(model_ratatouille.getWeekNumber()).getDay(position).getAll();
         int val = Recipes.getMoment();
         int val2 = position;
         int test = 0;
@@ -51,14 +51,12 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
         FrameLayout frameLayout = findViewById(R.id.frame_layout_detail);
 
         if (frameLayout == null){
-            Log.d("info","send value to the DetailActivity =>"+recipeList.get(position).getName());
             Intent intent = new Intent(this, RecipeDetailsActivity.class);
             Recipe recipe = recipeList.get(position);
             intent.putExtra(String.valueOf(Recipe.class), recipe);
             //model_ratatouille.recipeClick(recipeList.get(position).getId(), findViewById(R.id.frame_layout_detail));
             startActivity(intent);
         } else {
-            Log.d("info","send value to the fragment =>"+recipeList.get(position).getName());
             //this.recipeDetailsFragment = new RecipeDetailsFragment();
             this.fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);
             fragmentTransaction.commit();
