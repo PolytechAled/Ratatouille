@@ -19,6 +19,7 @@ public class Recipes {
     private int moment;
     private List<Recipe> recipeListGenerate;
     private Week weekGenerate;
+    private Week week;
 
     private Recipes() {
         this.recipeList = new HashMap<>();
@@ -53,6 +54,14 @@ public class Recipes {
 
     public static void setDay(Day da) {
         instance.day = da;
+    }
+
+    public static Week getWeek(){
+        return instance.week;
+    }
+
+    public static void setWeek(Week week){
+        instance.week = week;
     }
 
     public static Recipe getNewRecipe() {

@@ -16,6 +16,19 @@ import fr.polytech.ihm.td4menu.ratatouille.SearchRecipeActivity;
 import fr.polytech.ihm.td4menu.ratatouille.contracts.SearchRecipeContract;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import fr.polytech.ihm.td4menu.ratatouille.Intro;
+import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Spoonacular;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeActivity;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.CreateCustomRecipe;
 
 public class RecipeCreationFragment extends Fragment {
@@ -54,4 +67,10 @@ public class RecipeCreationFragment extends Fragment {
         return view;
     }
 
+    public Recipe randomRecipe() throws JSONException, IOException {
+        Spoonacular spoonacular = new Spoonacular();
+        List<Recipe> recipeList = spoonacular.searchRecipes("", Recipes.getWeek().getOrigin(),Recipes.getWeek().getDiet(),"");
+        Collections.shuffle(recipeList);
+        return recipeList.get(0);
+    }
 }
