@@ -64,4 +64,12 @@ public class Day {
     public void setSecondRecipe(Recipe secondRecipe) {
         this.secondRecipe = secondRecipe;
     }
+
+    public void setRecipe(int moment, Recipe recipe) {
+        if (moment == 0) {
+            setFirstRecipe(recipe);
+        } else if (moment == 1) {
+            setSecondRecipe(recipe);
+        }
+    }
 }

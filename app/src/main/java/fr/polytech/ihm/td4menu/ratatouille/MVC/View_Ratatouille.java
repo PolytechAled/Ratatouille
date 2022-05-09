@@ -1,14 +1,9 @@
 package fr.polytech.ihm.td4menu.ratatouille.MVC;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,12 +12,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeCategory;
 
 import fr.polytech.ihm.td4menu.ratatouille.recipe.OnButtonClickedListener;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.WeekAdapter;
+import fr.polytech.ihm.td4menu.ratatouille.adapters.WeekAdapter;
 
 public class View_Ratatouille implements Observer{
     private Controller_Ratatouille controller_ratatouille;

@@ -19,17 +19,14 @@ import fr.polytech.ihm.td4menu.ratatouille.datas.DataSource;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 
 public class ListRecipeFragment extends Fragment {
-    private WeekAdapter weekAdapter;
-    private RecyclerView recyclerView;
     private OnButtonClickedListener callBackActivity;
-    //private Model_Ratatouille model;
 
     View_Ratatouille view;
     Model_Ratatouille model;
     Controller_Ratatouille controller;
 
     public ListRecipeFragment(){
-        //this.model = model;
+
     }
 
     @Override
