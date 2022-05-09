@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,10 +54,7 @@ public class WithoutMenuFragment extends Fragment{
                     String n = " ";
                     List<Recipe> recipeList = spoonacular.searchRecipes(n, origin, diet, n);
                     Recipes.setRecipeListGenerate(recipeList);
-
-                    Intent intent = new Intent(getContext(), ListRecipeActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
+                    delay(2);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -66,5 +64,25 @@ public class WithoutMenuFragment extends Fragment{
         });
 
         return view;
+    }
+
+
+    public void delay(int seconds){
+        int milliseconds = seconds * 1000;
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("XXX");                 //add your code here
+                        Intent intent = new Intent(getContext(), ListRecipeActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                }, milliseconds);
+            }
+        });
     }
 }

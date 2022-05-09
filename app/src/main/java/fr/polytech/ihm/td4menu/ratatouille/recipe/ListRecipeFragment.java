@@ -1,7 +1,9 @@
 package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Controller_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.MenuGenerationActivity;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.APIRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.CustomRecipeFactory;
@@ -40,7 +43,7 @@ public class ListRecipeFragment extends Fragment {
 
         // TODO : Just for exemple
         model.build();
-
+        //this.delay(3);
         controller = new Controller_Ratatouille( model,view );
         model.setController( controller );
         view.setListener( controller );
