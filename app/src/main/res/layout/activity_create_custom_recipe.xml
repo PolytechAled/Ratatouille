@@ -117,7 +117,9 @@
             <EditText
                 android:id="@+id/customRecipeIngredients"
                 android:layout_width="match_parent"
+                android:height="50dp"
                 android:layout_height="match_parent"
+                android:hint="Liste d'ingrédient"
                 android:layout_marginLeft="35px"
                 android:layout_marginRight="35px"
                 android:ems="10"
@@ -145,6 +147,8 @@
             <EditText
                 android:id="@+id/customRecipeEtape"
                 android:layout_width="match_parent"
+                android:hint="Liste d'étapes"
+                android:height="50dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="35px"
                 android:layout_marginRight="35px"

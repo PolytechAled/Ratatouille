@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity
+            android:name=".MenuGenerationActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchRecipeActivity"
             android:exported="false" />
         <activity

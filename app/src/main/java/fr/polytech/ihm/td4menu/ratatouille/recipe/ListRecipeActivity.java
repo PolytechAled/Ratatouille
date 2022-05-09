@@ -1,23 +1,19 @@
 package fr.polytech.ihm.td4menu.ratatouille.recipe;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.WithoutMenuFragment;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
@@ -25,11 +21,16 @@ import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
 public class ListRecipeActivity extends AppCompatActivity implements OnButtonClickedListener {
     private RecipeDetailsFragment recipeDetailsFragment;
     private FragmentTransaction fragmentTransaction;
+    private ListRecipeFragment listRecipeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_recipe);
+
+        listRecipeFragment = new ListRecipeFragment();
+        this.fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_recipe_list, listRecipeFragment);
+        this.fragmentTransaction.commit();
 
         //display detailFragment if exists
         if (findViewById(R.id.frame_layout_detail) != null) {

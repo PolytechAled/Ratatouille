@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recipe.ListRecipeActivity">
+    tools:context=".MenuGenerationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/fragment_recipe_list"
+            android:id="@+id/fragment_menu_generation"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:layout_weight="1" />

@@ -45,8 +45,8 @@ public class WithoutMenuFragment extends Fragment{
             String diet = spinnerRegime.getSelectedItem().toString();
             Spoonacular spoonacular = new Spoonacular();
             try {
-                String
-                List<Recipe> recipeList = spoonacular.searchRecipes("",origin,diet,"");
+                String n = "";
+                List<Recipe> recipeList = spoonacular.searchRecipes(n,origin,diet,n);
                 //Toast.makeText(getContext(),recipeList)
                 int test = 0;
             } catch (JSONException e) {
