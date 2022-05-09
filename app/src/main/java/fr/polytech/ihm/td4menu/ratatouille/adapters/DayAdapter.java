@@ -1,6 +1,8 @@
 package fr.polytech.ihm.td4menu.ratatouille.adapters;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,25 +42,31 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView recipeName;
+        Recipe recipe;
 
         ViewHolder(View v){
             super(v);
             recipeName = v.findViewById(R.id.recipeName);
 
             v.setOnClickListener(clic ->{
-                callBackActivity.onButtonClicked(model_ratatouille,getAbsoluteAdapterPosition());
+                if (recipe != null)
+                    callBackActivity.onButtonClicked(model_ratatouille,getAbsoluteAdapterPosition());
             });
         }
 
-        public void display(Recipe day){
-            if(day != null)
-                recipeName.setText(day.getName());
+        public void display(Recipe recipe){
+            this.recipe = recipe;
+
+            if(recipe != null)
+                recipeName.setText(recipe.getName());
+            else {
+                recipeName.setText("No recipe here");
+                itemView.findViewById(R.id.recipeCLayout).setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+            }
         }
 
         @Override
         public void onClick(View view){
-            int position = getLayoutPosition();
-            Log.d("info", position + "");
         }
 
         @Override

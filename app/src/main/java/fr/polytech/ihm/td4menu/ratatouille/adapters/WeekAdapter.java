@@ -65,7 +65,7 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
             });
         }
 
-        public void display(Day day, int id){
+        public void display(Day day){
             if(day != null) {
                 dayName.setText(day.getDayString());
                 DayAdapter dayAdapter = new DayAdapter(context, model_ratatouille, getAbsoluteAdapterPosition(), callBackActivity);
@@ -75,8 +75,8 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
                 SwipeController swipeController = new SwipeController(new SwipeControllerActions() {
                     @Override
                     public void onRightClicked(int position) {
-                        // TODO Remove recipe
-                        Log.i("TEST", "test");
+                        day.setRecipe(position, null);
+                        notifyDataSetChanged();
                     }
                 }, true, false);
 
@@ -117,7 +117,7 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull WeekAdapter.ViewHolder viewHolder, int position){
-        viewHolder.display(dayList.get(position), position);
+        viewHolder.display(dayList.get(position));
     }
 
     @Override
