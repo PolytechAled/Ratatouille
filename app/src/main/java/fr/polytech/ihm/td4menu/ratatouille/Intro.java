@@ -31,8 +31,8 @@ public class Intro extends AppCompatActivity {
                     @Override
                     public void run() {
                         System.out.println("XXX");                 //add your code here
-                        //Intent intent = new Intent(getApplicationContext(), ListRecipeActivity.class);
-                        Intent intent = new Intent(getApplicationContext(), MenuGenerationActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ListRecipeActivity.class);
+                        //Intent intent = new Intent(getApplicationContext(), MenuGenerationActivity.class);
                         startActivity(intent);
                     }
                 }, milliseconds);
