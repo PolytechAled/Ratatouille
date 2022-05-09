@@ -11,11 +11,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <FrameLayout
+        <fragment
             android:id="@+id/fragment_recipe_list"
-            android:layout_height="match_parent"
+            android:name="fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeFragment"
             android:layout_width="match_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent">
+        </fragment>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

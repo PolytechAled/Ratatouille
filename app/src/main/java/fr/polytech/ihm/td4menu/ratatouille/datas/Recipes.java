@@ -20,6 +20,8 @@ public class Recipes {
     private List<Recipe> recipeListGenerate;
     private Week weekGenerate;
     private Week week;
+    private String origin;
+    private String diet;
 
     private Recipes() {
         this.recipeList = new HashMap<>();
@@ -135,5 +137,21 @@ public class Recipes {
             }
             instance.setWeekGenerate(new Week(dayList,0));
         }).start();
+    }
+
+    public static String getOrigin() {
+        return instance.origin;
+    }
+
+    public static void setOrigin(String origin) {
+        instance.origin = origin;
+    }
+
+    public static String getDiet() {
+        return instance.diet;
+    }
+
+    public static void setDiet(String diet) {
+        instance.diet = diet;
     }
 }

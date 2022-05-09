@@ -27,11 +27,11 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_recipe);
-
+/*
         listRecipeFragment = new ListRecipeFragment();
         this.fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_recipe_list, listRecipeFragment);
         this.fragmentTransaction.commit();
-
+*/
         //display detailFragment if exists
         if (findViewById(R.id.frame_layout_detail) != null) {
             this.recipeDetailsFragment = new RecipeDetailsFragment();
