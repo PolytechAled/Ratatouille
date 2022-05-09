@@ -51,7 +51,7 @@ public class WithoutMenuFragment extends Fragment{
             Spoonacular spoonacular = new Spoonacular();
             new Thread(() -> {
                 try {
-                    String n = " ";
+                    String n = "";
                     List<Recipe> recipeList = spoonacular.searchRecipes(n, origin, diet, n);
                     Recipes.setRecipeListGenerate(recipeList);
                     delay(2);
