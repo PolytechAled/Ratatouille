@@ -69,6 +69,7 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
         //intent.putExtra("model", (Parcelable) model_ratatouille);
         model_ratatouille.setDayNumber(position);
         Recipes.setDay(model_ratatouille.getWeek(model_ratatouille.getWeekNumber()).getDay(position));
+        Recipes.setWeek(model_ratatouille.getWeek(model_ratatouille.getWeekNumber()));
         startActivity(intent);
     }
 }
