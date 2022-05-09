@@ -58,24 +58,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new Thread(()-> {
-            try {
-                List<Recipe> recipes = new Spoonacular().searchRecipes("pancake", null, null, null);
-                System.out.println(recipes);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                new APIRecipeFactory(DataSource.SPOONACULAR, 324694).instantiate();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
         Intent intent = new Intent(this, Intro.class);
         startActivity(intent);
 

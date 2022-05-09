@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,7 +111,11 @@ public class Spoonacular extends RecipeApi {
         List<Recipe> recipeList = new ArrayList<>();
 
         try {
-            String path = String.format(SEARCH_RECIPE_API_URL, API_KEY, query, cuisine, diet, intolerances);
+            String path = String.format(SEARCH_RECIPE_API_URL, API_KEY,
+                    URLEncoder.encode(query, "utf-8"),
+                    URLEncoder.encode(cuisine, "utf-8"),
+                    URLEncoder.encode(diet, "utf-8"),
+                    URLEncoder.encode(intolerances, "utf-8"));
             Log.d("Ratatouille", "Connecting to \"" + path + "\"");
             URL url = new URL(path);
 
