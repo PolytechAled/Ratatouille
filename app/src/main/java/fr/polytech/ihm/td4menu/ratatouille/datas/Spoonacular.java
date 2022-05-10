@@ -110,6 +110,11 @@ public class Spoonacular extends RecipeApi {
     public List<Recipe> searchRecipes(String query, String cuisine, String diet, String intolerances) throws JSONException, IOException {
         List<Recipe> recipeList = new ArrayList<>();
 
+        query = query == null ? "" : query;
+        cuisine = cuisine == null ? "" : cuisine;
+        diet = diet == null ? "" : diet;
+        intolerances = intolerances == null ? "" : intolerances;
+
         try {
             String path = String.format(SEARCH_RECIPE_API_URL, API_KEY,
                     URLEncoder.encode(query, "utf-8"),
