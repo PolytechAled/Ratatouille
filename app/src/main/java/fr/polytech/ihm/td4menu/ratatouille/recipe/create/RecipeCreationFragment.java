@@ -28,6 +28,7 @@ import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.CreateCustomReci
 public class RecipeCreationFragment extends Fragment {
 
     private int moment;
+    private boolean refreshOk = false;
 
     private ActivityResultLauncher<Integer> mSearchRecipe = registerForActivityResult(new SearchRecipeContract(),
             recipe -> {
@@ -35,6 +36,16 @@ public class RecipeCreationFragment extends Fragment {
                 Recipes.setMoment(moment);
                 Recipes.setNewRecipe(recipe);
             });
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(refreshOk){
+            Log.d("info","refresh()");
+            getActivity().recreate();
+            refreshOk = false;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,9 +59,12 @@ public class RecipeCreationFragment extends Fragment {
         Log.d("info","moment : " + moment);
 
         view.findViewById(R.id.buttonMenuRecipeCreer).setOnClickListener(clic -> {
+            refreshOk = true;
+            Recipes.setMoment(moment);
             Intent intent = new Intent(getContext(), CreateCustomRecipe.class);
             intent.putExtra("moment", this.moment);
             startActivity(intent);
+            //getActivity().recreate();
         });
 
         view.findViewById(R.id.buttonMenuRecipeRecherche).setOnClickListener(clic -> {

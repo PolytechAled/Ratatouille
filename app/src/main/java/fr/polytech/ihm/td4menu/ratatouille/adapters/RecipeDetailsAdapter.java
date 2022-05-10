@@ -35,7 +35,9 @@ public class RecipeDetailsAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return recipeCategories.size();
+        if(recipeCategories != null)
+            return recipeCategories.size();
+        return 0;
     }
 
     public Object getItem(int position) {

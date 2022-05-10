@@ -33,7 +33,7 @@ public class RecipeDetailsFragment extends Fragment {
 
         TextView recipeName= result.findViewById(R.id.recipeDetailName);
         TextView textViewTime = result.findViewById(R.id.recipeDetailTime);
-        GridView gridViewPictos = result.findViewById(R.id.recipeDetailPictos);
+        //GridView gridViewPictos = result.findViewById(R.id.recipeDetailPictos);
         ImageView imageView = result.findViewById(R.id.recipeDetailImage);
         ListView listViewIngredient = result.findViewById(R.id.recipeDetailIngredients);
         ListView listViewInstruction = result.findViewById(R.id.recipeDetailInstructions);
@@ -57,8 +57,8 @@ public class RecipeDetailsFragment extends Fragment {
             ArrayAdapter arraysAdapterInstruction = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, r.getSteps());
             listViewInstruction.setAdapter(arraysAdapterInstruction);
 
-            RecipeDetailsAdapter recipeDetailsAdapter = new RecipeDetailsAdapter(getContext(),r.getCategoryList());
-            gridViewPictos.setAdapter(recipeDetailsAdapter);
+            //RecipeDetailsAdapter recipeDetailsAdapter = new RecipeDetailsAdapter(getContext(),r.getCategoryList());
+            //gridViewPictos.setAdapter(recipeDetailsAdapter);
             //imageView.setImageURI(Uri.parse(r.getImageUrl()));
         }
 

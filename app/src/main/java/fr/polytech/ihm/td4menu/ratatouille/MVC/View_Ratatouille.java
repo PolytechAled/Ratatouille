@@ -87,7 +87,7 @@ public class View_Ratatouille implements Observer{
                 if (recipe == null) break;
                 TextView recipeName= model.getLayout().findViewById(R.id.recipeDetailName);
                 TextView textViewTime = model.getLayout().findViewById(R.id.recipeDetailTime);
-                GridView gridViewPictos = model.getLayout().findViewById(R.id.recipeDetailPictos);
+                //GridView gridViewPictos = model.getLayout().findViewById(R.id.recipeDetailPictos);
                 ListView listViewIngredient = model.getLayout().findViewById(R.id.recipeDetailIngredients);
                 ListView listViewInstruction = model.getLayout().findViewById(R.id.recipeDetailInstructions);
 
@@ -99,8 +99,8 @@ public class View_Ratatouille implements Observer{
                 ArrayAdapter arraysAdapterInstruction = new ArrayAdapter<String>(this.layout.getContext(), android.R.layout.simple_list_item_1, recipe.getSteps());
                 listViewInstruction.setAdapter(arraysAdapterInstruction);
 
-                RecipeDetailsAdapter recipeDetailsAdapter = new RecipeDetailsAdapter(this.layout.getContext(),recipe.getCategoryList());
-                gridViewPictos.setAdapter(recipeDetailsAdapter);
+                //RecipeDetailsAdapter recipeDetailsAdapter = new RecipeDetailsAdapter(this.layout.getContext(),recipe.getCategoryList());
+                //gridViewPictos.setAdapter(recipeDetailsAdapter);
 
                 break;
         }

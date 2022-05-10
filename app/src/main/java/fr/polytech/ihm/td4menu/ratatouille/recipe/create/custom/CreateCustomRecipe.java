@@ -79,10 +79,13 @@ public class CreateCustomRecipe extends AppCompatActivity {
             String stepText = step.getText().toString();
 
             //Recipe newRecipe = new Recipe(55, nameText,timeVal,ingredientsText,stepText);
-            Recipes.setNewRecipe(new CustomRecipeFactory(nameText,"Fait maison",timeVal,ingredientsText,stepText).instantiate());
+            Recipe recipe = new CustomRecipeFactory(nameText,"Fait maison",timeVal,ingredientsText,stepText).instantiate();
+            Recipes.getDay().setRecipe(moment, recipe);
+            Recipes.setNewRecipe(recipe);
             //Recipes.getDay().setFirstRecipe(newRecipe);
             //Recipes.add(newRecipe);
             //Recipes.setNewRecipe(newRecipe);
+            //getParent().recreate();
             finish();
         });
     }
