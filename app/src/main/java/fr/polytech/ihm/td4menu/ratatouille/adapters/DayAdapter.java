@@ -50,7 +50,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder>{
 
             v.setOnClickListener(clic ->{
                 if (recipe != null)
-                    callBackActivity.onButtonClicked(model_ratatouille,getAbsoluteAdapterPosition());
+                    callBackActivity.onButtonClicked(model_ratatouille,day,getAbsoluteAdapterPosition());
             });
         }
 

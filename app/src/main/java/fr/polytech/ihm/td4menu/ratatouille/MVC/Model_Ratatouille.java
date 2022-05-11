@@ -106,7 +106,7 @@ public class Model_Ratatouille extends Observable{
         recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15, categoryList,ingredients,instructions).instantiate());
         recipes.add(new CustomRecipeFactory("Recette7", "France", 10, categoryList,ingredients,instructions).instantiate());
 
-        this.recipeList.put(0,new Week(Arrays.asList(new Day(0, recipes.get(0), null), new Day(1, recipes.get(0), recipes.get(2))),0));
+        this.recipeList.put(0,new Week(Arrays.asList(new Day(0, recipes.get(0), null), new Day(1, recipes.get(3), recipes.get(2))),0));
 /*
         Week week = Recipes.getWeekGenerate();
         this.recipeList.put(0,week);*/

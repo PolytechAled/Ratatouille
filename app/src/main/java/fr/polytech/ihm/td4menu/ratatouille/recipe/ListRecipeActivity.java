@@ -14,6 +14,7 @@ import java.util.List;
 import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.WithoutMenuFragment;
+import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
 import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
@@ -41,26 +42,20 @@ public class ListRecipeActivity extends AppCompatActivity implements OnButtonCli
     }
 
     @Override
-    public void onButtonClicked(Model_Ratatouille model_ratatouille, int position){
+    public void onButtonClicked(Model_Ratatouille model_ratatouille, Day day, int position){
         List<Recipe> recipeList = model_ratatouille.getWeek(model_ratatouille.getWeekNumber()).getDay(position).getAll();
-        int val = Recipes.getMoment();
-        int val2 = position;
-        int test = 0;
-        //Toast.makeText(this,"Vous voulez voir la Recette : " + recipeList.get(Recipes.getMoment()).getName() , Toast.LENGTH_SHORT).show();
-
         FrameLayout frameLayout = findViewById(R.id.frame_layout_detail);
 
         if (frameLayout == null){
             Intent intent = new Intent(this, RecipeDetailsActivity.class);
-            Recipe recipe = recipeList.get(position);
-            intent.putExtra(String.valueOf(Recipe.class), recipe);
+            intent.putExtra(String.valueOf(Recipe.class), day.get(position));
             //model_ratatouille.recipeClick(recipeList.get(position).getId(), findViewById(R.id.frame_layout_detail));
             startActivity(intent);
         } else {
             //this.recipeDetailsFragment = new RecipeDetailsFragment();
             this.fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout_detail, recipeDetailsFragment);
             fragmentTransaction.commit();
-            model_ratatouille.recipeClick(recipeList.get(position).getId(), findViewById(R.id.frame_layout_detail));
+            model_ratatouille.recipeClick(day.get(position).getId(), findViewById(R.id.frame_layout_detail));
        }
     }
 
