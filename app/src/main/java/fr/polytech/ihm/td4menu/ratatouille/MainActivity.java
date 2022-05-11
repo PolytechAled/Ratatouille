@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 .setContentIntent(pintent)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setStyle(new NotificationCompat.BigPictureStyle()
-                        .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.img))
+                        .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.pates_fraiches_au_beurre))
                         .bigLargeIcon(null))
                 .setAutoCancel(true);
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         TextView printheure = findViewById(R.id.printheure);
         printheure.setText(s);
 
-        if(Integer.parseInt(s) == 17 || Integer.parseInt(s) == 11) sendNotificationOnChannel("Au fourneau !", "C'est l'heure de préparer le plat", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
+        if(Integer.parseInt(s) == 17 || Integer.parseInt(s) == 11) sendNotificationOnChannel("Au fourneau !", "C'est l'heure de préparer le plat Pâtes aux beurres", CHANNEL_3_ID, NotificationCompat.PRIORITY_HIGH);
 
     }
 }
