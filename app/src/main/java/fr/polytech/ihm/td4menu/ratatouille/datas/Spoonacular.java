@@ -30,17 +30,17 @@ public class Spoonacular extends RecipeApi {
     private static final String JSON_RECIPE_STEPS = "steps";
     private static final String JSON_RECIPE_STEP = "step";
 
+    private static final int RECIPE_LIMIT = 3;
+
     private static final String RECIPE_API_URL = "https://api.spoonacular.com/recipes/%d/information?apiKey=%s&includeNutrition=false";
     private static final String SEARCH_RECIPE_API_URL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=%s&query=%s&" +
             "cuisine=%s&" +
             "diet=%s&" +
             "intolerances=%s&" +
             "instructionsRequired=true&" +
-            // TODO remove limit
-            "number=2";
+            "number=" + RECIPE_LIMIT;
     private static final String RANDOM_RECIPES_API_URL = "https://api.spoonacular.com/recipes/random?apiKey=%s&" +
-            // TODO remove limit
-            "number=2";
+            "number=" + RECIPE_LIMIT;
     private static final String RECIPE_INSTRUCTIONS_API_URL = "https://api.spoonacular.com/recipes/%d/analyzedInstructions?apiKey=%s";
 
     @Override
