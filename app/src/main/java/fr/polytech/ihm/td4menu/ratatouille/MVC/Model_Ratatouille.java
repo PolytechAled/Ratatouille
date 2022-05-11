@@ -98,15 +98,20 @@ public class Model_Ratatouille extends Observable{
         instructions.add("Faire un autre ça");
         instructions.add("Faire un autre de l'autre ça");
 
-        recipes.add(new CustomRecipeFactory("Recette1", "France", 75, categoryList,ingredients,instructions).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette2", "France", 15, categoryList,ingredients,instructions).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette3", "Belgique", 56, categoryList,ingredients,instructions).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette4", "Chine", 45, categoryList,ingredients,instructions).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette5", "Ecosse", 45, categoryList,ingredients,instructions).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette6", "Espagne", 15, categoryList,ingredients,instructions).instantiate());
-        recipes.add(new CustomRecipeFactory("Recette7", "France", 10, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Boeuf bourguignon", "France", 75, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Pâtes au beurre", "France", 15, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Raclette", "Belgique", 56, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Pizza", "Chine", 45, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Tacos Saucisse", "Ecosse", 45, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Couscous", "Espagne", 15, categoryList,ingredients,instructions).instantiate());
+        recipes.add(new CustomRecipeFactory("Paëlla", "France", 10, categoryList,ingredients,instructions).instantiate());
 
-        this.recipeList.put(0,new Week(Arrays.asList(new Day(0, recipes.get(0), null), new Day(1, recipes.get(3), recipes.get(2))),0));
+        this.recipeList.put(0,new Week(Arrays.asList(
+                new Day(0, recipes.get(0), recipes.get(1)),
+                new Day(1, recipes.get(2), recipes.get(3)),
+                new Day(2, recipes.get(4), recipes.get(5)),
+                new Day(3, recipes.get(5), recipes.get(6))
+                ),0));
 /*
         Week week = Recipes.getWeekGenerate();
         this.recipeList.put(0,week);*/
