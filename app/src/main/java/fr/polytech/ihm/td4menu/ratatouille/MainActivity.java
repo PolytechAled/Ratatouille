@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.start;
+package fr.polytech.ihm.td4menu.ratatouille;
 
 
 import static fr.polytech.ihm.td4menu.ratatouille.repository.NotificationRepository.CHANNEL_3_ID;
@@ -18,6 +18,7 @@ import java.util.Date;
 
 import fr.polytech.ihm.td4menu.ratatouille.notification.HomeActivity;
 import fr.polytech.ihm.td4menu.ratatouille.R;
+import fr.polytech.ihm.td4menu.ratatouille.start.Intro;
 
 public class MainActivity extends AppCompatActivity {
 

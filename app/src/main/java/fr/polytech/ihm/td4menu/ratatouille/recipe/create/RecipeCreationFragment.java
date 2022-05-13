@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create;
+package fr.polytech.ihm.td4menu.ratatouille.recipe.create;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import fr.polytech.ihm.td4menu.ratatouille.datas.api.Spoonacular;
-import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create.custom.CreateCustomRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.CreateCustomRecipe;
 
 public class RecipeCreationFragment extends Fragment {
 

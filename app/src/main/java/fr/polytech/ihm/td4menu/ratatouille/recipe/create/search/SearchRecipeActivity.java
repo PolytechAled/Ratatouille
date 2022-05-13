@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille;
+package fr.polytech.ihm.td4menu.ratatouille.recipe.create.search;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.adapters.RecipeListAdapter;
 import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;

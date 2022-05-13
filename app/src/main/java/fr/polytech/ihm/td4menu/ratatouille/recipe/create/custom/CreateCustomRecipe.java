@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create.custom;
+package fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +17,9 @@ import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.factory.CustomRecipeFactory;
 import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
-import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create.custom.MVC.Controller_CustomRecipe;
-import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create.custom.MVC.Model_CustomRecipe;
-import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create.custom.MVC.View_CustomRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC.Controller_CustomRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC.Model_CustomRecipe;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom.MVC.View_CustomRecipe;
 
 public class CreateCustomRecipe extends AppCompatActivity {
     private Model_CustomRecipe model_customRecipe;

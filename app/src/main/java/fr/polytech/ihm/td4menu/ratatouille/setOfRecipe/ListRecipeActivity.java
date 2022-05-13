@@ -14,7 +14,7 @@ import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
 import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Recipes;
-import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create.MenuOfRecipeCreation;
+import fr.polytech.ihm.td4menu.ratatouille.recipe.create.MenuOfRecipeCreation;
 
 public class ListRecipeActivity extends AppCompatActivity implements OnButtonClickedListener {
     private RecipeDetailsFragment recipeDetailsFragment;

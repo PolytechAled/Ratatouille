@@ -17,19 +17,19 @@
             android:name=".start.MenuGenerationActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchRecipeActivity"
+            android:name=".recipe.create.search.SearchRecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".datas.recipe.create.RecipeCreationActivity"
+            android:name=".recipe.create.RecipeCreationActivity"
             android:exported="false" />
         <activity
             android:name=".start.Intro"
             android:exported="false" />
         <activity
-            android:name=".datas.recipe.create.MenuOfRecipeCreation"
+            android:name=".recipe.create.MenuOfRecipeCreation"
             android:exported="false" />
         <activity
-            android:name=".datas.recipe.create.custom.CreateCustomRecipe"
+            android:name=".recipe.create.custom.CreateCustomRecipe"
             android:exported="false" />
         <activity
             android:name=".setOfRecipe.RecipeDetailsActivity"
@@ -44,28 +44,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".CreationTimeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditingCustomRecipeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MenuGeneratorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DayConfigurationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SelectMenuActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CreateARecipe"
-            android:exported="false" />
-        <activity
-            android:name=".start.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

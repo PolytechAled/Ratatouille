@@ -1,4 +1,4 @@
-package fr.polytech.ihm.td4menu.ratatouille.datas.recipe.create.custom;
+package fr.polytech.ihm.td4menu.ratatouille.recipe.create.custom;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
