@@ -3,7 +3,6 @@ package fr.polytech.ihm.td4menu.ratatouille.adapters;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.mvc.Model_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.OnButtonClickedListener;
+import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.setOfRecipe.OnButtonClickedListener;
 
 public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder>{
 

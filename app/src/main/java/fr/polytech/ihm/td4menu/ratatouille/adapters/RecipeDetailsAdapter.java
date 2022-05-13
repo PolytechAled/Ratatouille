@@ -1,26 +1,16 @@
 package fr.polytech.ihm.td4menu.ratatouille.adapters;
 
 import android.content.Context;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.transition.Visibility;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
-import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
-import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.datas.RecipeCategory;
+import fr.polytech.ihm.td4menu.ratatouille.mvc.Model_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.RecipeCategory;
 
 
 public class RecipeDetailsAdapter extends BaseAdapter {

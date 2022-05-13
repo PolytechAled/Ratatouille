@@ -16,11 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.polytech.ihm.td4menu.ratatouille.MVC.Model_Ratatouille;
-import fr.polytech.ihm.td4menu.ratatouille.MVC.View_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.mvc.Model_Ratatouille;
+import fr.polytech.ihm.td4menu.ratatouille.mvc.View_Ratatouille;
 import fr.polytech.ihm.td4menu.ratatouille.R;
 import fr.polytech.ihm.td4menu.ratatouille.datas.Day;
-import fr.polytech.ihm.td4menu.ratatouille.recipe.OnButtonClickedListener;
+import fr.polytech.ihm.td4menu.ratatouille.setOfRecipe.OnButtonClickedListener;
 import fr.polytech.ihm.td4menu.ratatouille.utils.SwipeController;
 import fr.polytech.ihm.td4menu.ratatouille.utils.SwipeControllerActions;
 

@@ -14,46 +14,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratatouille">
         <activity
-            android:name=".MenuGenerationActivity"
+            android:name=".start.MenuGenerationActivity"
             android:exported="false" />
         <activity
             android:name=".SearchRecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".recipe.create.RecipeCreationActivity"
+            android:name=".datas.recipe.create.RecipeCreationActivity"
             android:exported="false" />
         <activity
-            android:name=".Intro"
+            android:name=".start.Intro"
             android:exported="false" />
         <activity
-            android:name=".recipe.create.MenuOfRecipeCreation"
+            android:name=".datas.recipe.create.MenuOfRecipeCreation"
             android:exported="false" />
         <activity
-            android:name=".recipe.create.custom.CreateCustomRecipe"
+            android:name=".datas.recipe.create.custom.CreateCustomRecipe"
             android:exported="false" />
         <activity
-            android:name=".recipe.RecipeDetailsActivity"
+            android:name=".setOfRecipe.RecipeDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".recipe.ListRecipeActivity"
+            android:name=".setOfRecipe.ListRecipeActivity"
             android:exported="false" />
 
         <service
-            android:name=".CookNotification"
+            android:name=".notification.CookNotification"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".Home"
-            android:exported="false" />
-        <activity
             android:name=".CreationTimeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddIngredientActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".EditingCustomRecipeActivity"
@@ -74,7 +65,7 @@
             android:name=".CreateARecipe"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".start.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

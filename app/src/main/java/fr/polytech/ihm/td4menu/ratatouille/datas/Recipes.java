@@ -4,11 +4,13 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import fr.polytech.ihm.td4menu.ratatouille.datas.api.Spoonacular;
+import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
 
 public class Recipes {
     private static final Recipes instance = new Recipes();

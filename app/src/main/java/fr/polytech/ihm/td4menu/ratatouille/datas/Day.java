@@ -3,6 +3,8 @@ package fr.polytech.ihm.td4menu.ratatouille.datas;
 import java.util.Arrays;
 import java.util.List;
 
+import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
+
 public class Day {
 
     private int day;

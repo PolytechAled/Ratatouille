@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recipe.ListRecipeActivity">
+    tools:context=".setOfRecipe.ListRecipeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
 
         <fragment
             android:id="@+id/fragment_recipe_list"
-            android:name="fr.polytech.ihm.td4menu.ratatouille.recipe.ListRecipeFragment"
+            android:name="fr.polytech.ihm.td4menu.ratatouille.setOfRecipe.ListRecipeFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </fragment>

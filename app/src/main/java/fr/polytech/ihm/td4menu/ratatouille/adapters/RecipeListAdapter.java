@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import fr.polytech.ihm.td4menu.ratatouille.R;
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
 
 public class RecipeListAdapter extends BaseAdapter {
 

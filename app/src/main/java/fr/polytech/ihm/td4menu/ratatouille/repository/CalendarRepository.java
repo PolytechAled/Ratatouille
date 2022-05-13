@@ -6,7 +6,7 @@ import android.provider.CalendarContract;
 
 import java.util.Calendar;
 
-import fr.polytech.ihm.td4menu.ratatouille.datas.Recipe;
+import fr.polytech.ihm.td4menu.ratatouille.datas.recipe.Recipe;
 
 public class CalendarRepository {
 
