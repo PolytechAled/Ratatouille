@@ -67,7 +67,7 @@ public class Model_Ratatouille extends Observable{
         this.recipeShow = 0;
     }
 
-    public void build(){
+    public void build(){/*
         Log.d("info","BUILD DATASET");
         recipes = new ArrayList<>();
 
@@ -101,9 +101,11 @@ public class Model_Ratatouille extends Observable{
                 new Day(2, recipes.get(4), recipes.get(5)),
                 new Day(3, recipes.get(6), recipes.get(7))
                 ),0));
+*/
 
-//        Week week = Recipes.getWeekGenerate();
-//        this.recipeList.put(0,week);
+        Week week = Recipes.getWeekGenerate();
+        this.recipeList.put(0,week);
+
         this.updateType = VIEW_TYPE.VIEW_LISTRECIPE;
         setChanged();
         notifyObservers();
